@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   alternates: { canonical: "https://growagarden2pet.wiki" },
   verification: { google: "enAqcZP9jZTfS7WgZx6qSmxpJuCsQquPbRKN5JTGh8Y" },
-  icons: { icon: "/favicon.png", apple: "/favicon.png" },
+  icons: { icon: "/favicon-32x32.png", apple: "/apple-touch-icon.png" },
 };
 
 const navItems = [
