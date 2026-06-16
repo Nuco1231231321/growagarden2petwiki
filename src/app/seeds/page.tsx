@@ -76,6 +76,19 @@ export default function SeedsPage() {
         </table>
       </div>
       <p className="mt-2 text-xs text-[#777]">Example: Venus Fly Trap base ~3,840 → Electric = <strong>~159,000 Sheckles</strong>.</p>
+
+      <h2 className="text-xl font-extrabold text-[#2E3B2E] mt-8 mb-3">Bargain System</h2>
+      <p className="text-sm text-[#777] leading-relaxed">
+        When selling crops, there is a <strong>Bargain button</strong> that lets you gamble for a higher sell price.
+        Each attempt costs <strong>3,000 Sheckles</strong>. If it fails, you lose the 3,000 and sell at the base price.
+        If it succeeds, you get an increased price — but the exact increase is random.
+      </p>
+      <div className="mt-3 rounded-xl border-2 border-[#E53935]/20 bg-[#FFEBEE] p-4">
+        <p className="text-sm font-extrabold text-[#E53935]">⚠️ Generally not recommended</p>
+        <p className="mt-1 text-sm text-[#E53935]/80">
+          Sources consistently advise <strong>against using Bargain</strong> on normal or low-value crops. The 3,000 Sheckle fee often exceeds any gain. Only consider it on rare mutated crops (Electric/Rainbow/Bloodlit) if you can afford losing the fee.
+        </p>
+      </div>
     </main>
   );
 }

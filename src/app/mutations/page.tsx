@@ -30,7 +30,11 @@ export default function MutationsPage() {
   return (
     <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
       <h1 className="text-3xl font-extrabold text-[#2E3B2E]">Mutations Guide</h1>
-      <p className="mt-2 text-sm text-[#777]">Mutations multiply crop sell value. Only <strong>one mutation per crop</strong> in GAG2 (unlike GAG1). Mutations apply randomly while crops are growing — leave ripe crops unharvested to catch them.</p>
+      <div className="mt-3 rounded-xl border-2 border-[#FFC107]/40 bg-[#FFF8E1] p-4">
+        <p className="text-sm font-extrabold text-[#F57F17]">⚠️ Can you stack mutations? No.</p>
+        <p className="mt-1 text-sm text-[#F57F17]/80">Unlike Grow a Garden 1, <strong>only one mutation per crop</strong> is allowed in GAG2. When a new mutation applies, it <strong>replaces</strong> the existing one. Focus on getting the single highest-value mutation instead of trying to combine them.</p>
+      </div>
+      <p className="mt-3 text-sm text-[#777]">Mutations multiply crop sell value. They apply randomly while crops are growing. <strong>Leave ripe crops unharvested</strong> during weather events to catch them.</p>
 
       <h2 className="text-xl font-extrabold text-[#2E3B2E] mt-8 mb-3">All Mutations</h2>
       <div className="overflow-x-auto rounded-xl border border-[#3c3c3c]/20 bg-white">
