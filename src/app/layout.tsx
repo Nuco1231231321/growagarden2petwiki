@@ -53,6 +53,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   alternates: { canonical: "https://growagarden2pet.wiki" },
   verification: { google: "enAqcZP9jZTfS7WgZx6qSmxpJuCsQquPbRKN5JTGh8Y" },
+  icons: { icon: "/favicon.png", apple: "/favicon.png" },
 };
 
 const navItems = [
@@ -74,6 +75,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-J8QVNGLN2X');`}
+        </Script>
+        <Script id="schema-org" type="application/ld+json" strategy="beforeInteractive">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "Grow a Garden 2 Pet Wiki",
+            url: "https://growagarden2pet.wiki",
+            description: "Complete GAG2 guide with all 13 pets, active codes, seeds, gears, mutations, and beginner walkthrough.",
+          })}
         </Script>
         <header className="sticky top-0 z-50 border-b-2 border-graphite bg-paper/95 backdrop-blur">
           <div className="mx-auto flex h-16 w-[calc(100%-24px)] max-w-[1600px] items-center justify-between gap-3 sm:w-[calc(100%-40px)]">
