@@ -1,8 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { gag2Eggs, gag2Images } from "@/lib/data";
+import { gag2Eggs, gag2Pets, gag2Images } from "@/lib/data";
 import type { Metadata } from "next";
 import { RelatedGuides } from "@/components/related-guides";
+
+const petImageKey: Record<string, string> = {};
+gag2Pets.forEach((p) => { petImageKey[p.name] = p.imageKey; });
+petImageKey["Big Bee"] = "bee";
 
 export const metadata: Metadata = {
   title: "Grow a Garden 2 Eggs Guide: Common & Epic Egg Hatch Odds",
@@ -45,7 +49,10 @@ export default function EggsPage() {
        <tbody>
         {egg.pets.map((p) => (
          <tr key={p.name} className="border-b border-[#3c3c3c]/10 last:border-0">
-          <td className="px-3 py-2 font-bold text-[#4b4b4b]">{p.name}</td>
+          <td className="px-3 py-2 flex items-center gap-2">
+           {petImageKey[p.name] && <Image src={gag2Images.pet(petImageKey[p.name])} alt={p.name} width={28} height={28} className="rounded-lg" />}
+           <span className="font-bold text-[#4b4b4b]">{p.name}</span>
+          </td>
           <td className="px-3 py-2 font-mono text-sm font-extrabold text-[#4CAF50]">{p.odds}</td>
           <td className="px-3 py-2">
            <div className="h-2 rounded-full bg-[#e5e7eb] w-32">
