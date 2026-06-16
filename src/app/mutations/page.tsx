@@ -2,8 +2,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Grow a Garden 2 Mutations: Gold, Rainbow, Electric & Weather Multipliers",
-  description: "All 8 GAG2 crop mutations with value multipliers: Gold (15×), Rainbow (40×), Electric (80×), Bloodlit. Weather events explained and how to maximize profits from mutated crops.",
+  title: "Grow a Garden 2 Mutations: Gold, Rainbow, Electric & Weather",
+  description: "All 8 GAG2 crop mutations with multipliers: Gold (15×), Rainbow (40×), Electric (80×), Bloodlit. Weather event triggers and how to maximize profits from mutated crops.",
   alternates: { canonical: "https://growagarden2pet.wiki/mutations" },
 };
 

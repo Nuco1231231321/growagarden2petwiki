@@ -4,8 +4,8 @@ import { gag2Images } from "@/lib/data";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Grow a Garden 2 Night Stealing: How to Steal Crops & Defend Your Garden",
-  description: "Complete GAG2 night stealing guide: day/night cycle timing, best stealing strategies, how to defend with pets (Bee, Black Dragon), gears (Gnome), and risk vs reward by garden type.",
+  title: "Grow a Garden 2 Night Stealing: How to Steal & Defend Your Garden",
+  description: "GAG2 night stealing guide: day/night cycle, best stealing strategies, defense with Bee and Black Dragon pets, Gnome gear, and risk vs reward by garden type.",
   alternates: { canonical: "https://growagarden2pet.wiki/night-stealing" },
 };
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Grow a Garden 2 Props: 14 Crates, Bear Traps, Fences & Conveyors",
-  description: "All 14 GAG2 crates with prices, contents, and drop rates. Bear Traps, 14 fence types, Conveyors, Teleporter Pads, Owner Doors, Seesaws. Best crates for garden defense.",
+  description: "All 14 GAG2 crates with prices, contents and drop rates. Bear Traps, 14 fence types, Conveyors, Teleporter Pads, Owner Doors. Best crates for garden defense.",
   alternates: { canonical: "https://growagarden2pet.wiki/props" },
 };
 

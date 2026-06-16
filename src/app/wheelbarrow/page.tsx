@@ -4,7 +4,7 @@ import { gag2Images } from "@/lib/data";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Grow a Garden 2 Wheelbarrow: What It Does, How to Get & Is It Worth 500K?",
+  title: "Grow a Garden 2 Wheelbarrow: What It Does, How to Get & Worth It?",
   description: "What does the Wheelbarrow do in GAG2? How to get it (500K Sheckles or 129 Robux), what it's used for, and whether it's worth buying compared to pets and other gears.",
   alternates: { canonical: "https://growagarden2pet.wiki/wheelbarrow" },
 };

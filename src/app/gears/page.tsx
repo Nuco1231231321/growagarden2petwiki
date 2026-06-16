@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Grow a Garden 2 Gears Guide: Prices, Effects & Best Gears",
-  description: "Every GAG2 gear: Watering Cans, Sprinklers, Mushrooms, Gnome, Flashbang, Basic Pot, Wheelbarrow, Teleporter, Trowel, Lantern. Plus Robux-only gears like Rainbow Carpet and Freeze Ray.",
+  description: "Every GAG2 gear: Watering Cans, Sprinklers, Mushrooms, Gnome, Flashbang, Basic Pot, Wheelbarrow, Teleporter. Plus Robux-only gears: Rainbow Carpet, Freeze Ray, Vine Wrapper.",
   alternates: { canonical: "https://growagarden2pet.wiki/gears" },
 };
 

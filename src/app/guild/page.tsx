@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Grow a Garden 2 Guilds: How to Create, Join & Earn Weekly Rewards",
-  description: "Complete GAG2 guilds guide: how to create a guild (99 Robux), how to join via mailbox invite (not Gilbert!), guild roles and permissions, weekly competitions and crop-based rewards.",
+  description: "GAG2 guilds guide: how to create (99 Robux), join via mailbox invite, guild roles (Owner/Elder/Member), weekly competitions and crop-based rewards.",
   alternates: { canonical: "https://growagarden2pet.wiki/guild" },
 };
 
