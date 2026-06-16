@@ -3,7 +3,7 @@ import { gag2TopSeeds, gag2Images } from "@/lib/data";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Grow a Garden 2 Seeds: Best Crops, Acorn, Venus Fly Trap & Dragon's Breath",
+  title: "Grow a Garden 2 Seeds: Best Crops, Acorn, Venus Fly Trap & Dragon Breath",
   description: "All GAG2 seeds ranked: prices, harvest types, Acorn drop rate, Venus Fly Trap defense, Moon Bloom, and best crops for early, mid and late game.",
   alternates: { canonical: "https://growagarden2pet.wiki/seeds" },
 };

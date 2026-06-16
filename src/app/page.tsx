@@ -5,7 +5,7 @@ import { gag2Images } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Grow a Garden 2 Wiki — Pets, Codes, Seeds & Gear Guides",
-  description: "GAG2 wiki with all 12 pets, active codes, best seeds, gears, mutations, night stealing, guilds and beginner walkthrough. Fast lookup tables, real game data, buy-or-skip advice.",
+  description: "GAG2 wiki with all 12 pets, active codes, best seeds, gears, mutations, night stealing and beginner walkthrough. Real game data, fast lookup tables, buy-or-skip advice.",
   alternates: { canonical: "https://growagarden2pet.wiki" },
 };
 
