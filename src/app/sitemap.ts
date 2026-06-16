@@ -5,6 +5,8 @@ const BASE = "https://growagarden2pet.wiki";
 const pages = [
   { path: "", priority: 1.0, freq: "daily" as const },
   { path: "/pets", priority: 0.9, freq: "weekly" as const },
+  { path: "/calculator", priority: 0.9, freq: "weekly" as const },
+  { path: "/values", priority: 0.86, freq: "weekly" as const },
   { path: "/codes", priority: 0.9, freq: "daily" as const },
   { path: "/wheelbarrow", priority: 0.85, freq: "weekly" as const },
   { path: "/beginner-guide", priority: 0.85, freq: "weekly" as const },

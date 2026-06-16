@@ -1,7 +1,9 @@
 import Image from "next/image";
+import Script from "next/script";
 import { gag2Images, gag2Pets } from "@/lib/data";
 import type { Metadata } from "next";
 import { PetFilter } from "@/components/pet-filter";
+import { PetBuyOrder } from "@/components/pet-buy-order";
 import { RelatedGuides } from "@/components/related-guides";
 
 export const metadata: Metadata = {
@@ -29,13 +31,41 @@ const rolePicks = [
   ["Endgame defense", "Ice Serpent", "Buy when your garden has crops worth protecting."],
 ];
 
+const faq = [
+  ["What pet should I buy first?", "Buy Bunny first because speed helps every early route."],
+  ["What pet should I buy after Bunny?", "Buy Deer after Bunny because crop growth improves your income loop."],
+  ["When should I buy Bee?", "Buy Bee before keeping expensive crops overnight because it is the first serious defense pet."],
+  ["Which pet is best for mutation value?", "Unicorn and Golden Dragonfly are the main mutation-income pets."],
+] as const;
+
 export default function PetsPage() {
   return (
-    <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-      <div className="mb-6 flex items-center gap-4">
+    <main className="mx-auto w-full max-w-6xl min-w-0 overflow-hidden px-4 py-8 sm:px-6">
+      <Script id="pets-faq-jsonld" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faq.map(([question, answer]) => ({
+            "@type": "Question",
+            name: question,
+            acceptedAnswer: { "@type": "Answer", text: answer },
+          })),
+        })}
+      </Script>
+      <Script id="pets-breadcrumb-jsonld" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://growagarden2pet.wiki" },
+            { "@type": "ListItem", position: 2, name: "Pets", item: "https://growagarden2pet.wiki/pets" },
+          ],
+        })}
+      </Script>
+      <div className="mb-6 flex min-w-0 items-center gap-4">
         <Image src={gag2Images.pet("bunny")} alt="Bunny pet" width={64} height={64} className="rounded-xl" />
-        <div>
-          <h1 className="text-3xl font-extrabold text-[#2E3B2E] sm:text-4xl">Grow a Garden 2 Pets Guide</h1>
+        <div className="min-w-0">
+          <h1 className="break-words text-3xl font-extrabold text-[#2E3B2E] sm:text-4xl">Grow a Garden 2 Pets Guide</h1>
           <p className="text-sm text-[#777]">All {gag2Pets.length} pets, prices, roles, tiers, and buy order.</p>
         </div>
       </div>
@@ -45,7 +75,7 @@ export default function PetsPage() {
         <p className="mt-2 text-sm leading-6 text-[#4b4b4b]">
           Buy Bunny first, Deer second, and Bee before you start holding expensive crops overnight. Save mutation and night-raiding pets until your income loop is stable.
         </p>
-        <div className="mt-4 overflow-x-auto rounded-xl border border-[#e5e7eb] bg-white">
+        <div className="mt-4 max-w-full overflow-x-auto rounded-xl border border-[#e5e7eb] bg-white">
           <table className="w-full text-sm">
             <thead><tr className="border-b border-[#e5e7eb] bg-[#F9FAFB]"><th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Order</th><th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Pet</th><th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Cost</th><th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Why</th></tr></thead>
             <tbody>
@@ -73,6 +103,10 @@ export default function PetsPage() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="mt-8">
+        <PetBuyOrder />
       </section>
 
       <section className="mt-8">
@@ -114,6 +148,18 @@ export default function PetsPage() {
         { href: "/night-stealing", title: "Night Stealing", detail: "Use defense pets to protect crops", emoji: "Defense" },
         { href: "/weather", title: "Weather Events", detail: "Use mutation pets during weather", emoji: "Weather" },
       ]} />
+
+      <section className="mt-10">
+        <h2 className="text-xl font-extrabold text-[#2E3B2E]">FAQ</h2>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
+          {faq.map(([question, answer]) => (
+            <div key={question} className="rounded-xl border border-[#e5e7eb] bg-white p-4">
+              <h3 className="text-sm font-extrabold text-[#4b4b4b]">{question}</h3>
+              <p className="mt-1 text-sm leading-6 text-[#777]">{answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }

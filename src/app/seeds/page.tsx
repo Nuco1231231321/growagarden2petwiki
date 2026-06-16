@@ -33,7 +33,7 @@ export default function SeedsPage() {
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <div className="overflow-hidden rounded-xl border border-[#3c3c3c]/20 bg-white">
           <Image src={gag2Images.seed("seed-shop")} alt="Seed Shop" width={600} height={338} className="w-full" />
-          <p className="border-t border-[#3c3c3c]/10 px-3 py-2 text-center text-xs text-[#777]">Check Sam's Seed Shop often for upgrades.</p>
+          <p className="border-t border-[#3c3c3c]/10 px-3 py-2 text-center text-xs text-[#777]">Check the Seed Shop often for upgrades.</p>
         </div>
         <div className="overflow-hidden rounded-xl border border-[#3c3c3c]/20 bg-white">
           <Image src={gag2Images.seed("venus-fly-trap")} alt="Venus Fly Trap" width={600} height={338} className="w-full" />
@@ -68,7 +68,7 @@ export default function SeedsPage() {
         {[
           ["Which seed is best early game?", "Strawberry and Blueberry are the first targets because they keep producing."],
           ["When should I buy Bamboo?", "Buy Bamboo once your starter loop is running. It is the main early-to-mid game upgrade."],
-          ["What should I protect at night?", "Protect Pomegranate, Venus Fly Trap, Moon Bloom, Dragon's Breath, and any boosted crops."],
+          ["What should I protect at night?", "Protect Pomegranate, Venus Fly Trap, Moon Bloom, Dragon Breath, and any boosted crops."],
           ["Should I harvest during weather?", "Leave high-value crops unharvested while weather is active, then harvest after the event."],
         ].map(([q, a]) => (
           <div key={q} className="rounded-xl border-2 border-[#3c3c3c]/10 bg-white p-4">

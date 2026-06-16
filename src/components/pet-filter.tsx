@@ -48,6 +48,10 @@ export function PetFilter() {
 
   const hasFilters = rarity !== "All" || role !== "All" || tier !== "All" || search !== "";
   const comparePets = gag2Pets.filter((pet) => compare.has(pet.name));
+  const bestComparePet = [...comparePets].sort((a, b) => {
+    const tierOrder = { S: 4, A: 3, B: 2, C: 1 };
+    return tierOrder[b.tier] - tierOrder[a.tier] || priceNumber(a.costSheckles) - priceNumber(b.costSheckles);
+  })[0];
 
   function toggleCompare(name: string) {
     const next = new Set(compare);
@@ -58,14 +62,14 @@ export function PetFilter() {
 
   return (
     <>
-      <div className="sticky top-[64px] z-40 mb-6 space-y-2.5 rounded-xl border border-[#e5e7eb] bg-white/95 p-3 shadow-sm backdrop-blur">
-        <div className="flex gap-2">
+      <div className="sticky top-[64px] z-40 mb-6 min-w-0 space-y-2.5 rounded-xl border border-[#e5e7eb] bg-white/95 p-3 shadow-sm backdrop-blur">
+        <div className="flex min-w-0 flex-col gap-2 sm:flex-row">
           <input
             type="text"
             placeholder="Search pet or ability..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="flex-1 rounded-lg border border-[#e5e7eb] px-3 py-2 text-sm font-medium text-[#4b4b4b] placeholder:text-[#aaa] focus:border-garden focus:outline-none"
+            className="min-w-0 flex-1 rounded-lg border border-[#e5e7eb] px-3 py-2 text-sm font-medium text-[#4b4b4b] placeholder:text-[#aaa] focus:border-garden focus:outline-none"
           />
           <button
             onClick={() => setCompact(!compact)}
@@ -108,20 +112,30 @@ export function PetFilter() {
       </div>
 
       {compare.size > 0 && (
-        <div className="sticky top-[176px] z-30 mb-4 flex flex-wrap items-center gap-3 rounded-xl border-2 border-[#FFC107] bg-[#FFF8E1] p-3">
-          <span className="text-sm font-extrabold text-[#F57F17]">Comparing {compare.size}/3</span>
-          {comparePets.map((pet) => (
-            <div key={pet.name} className="flex items-center gap-1.5 rounded-lg border border-[#FFC107] bg-white px-2 py-1">
-              <Image src={gag2Images.pet(pet.imageKey)} alt={pet.name} width={20} height={20} className="rounded" />
-              <span className="text-xs font-bold text-[#4b4b4b]">{pet.name}</span>
-              <button onClick={() => toggleCompare(pet.name)} className="text-[10px] text-[#999]">Remove</button>
+        <div className="sticky top-[176px] z-30 mb-4 rounded-xl border-2 border-[#FFC107] bg-[#FFF8E1] p-3">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="text-sm font-extrabold text-[#F57F17]">Comparing {compare.size}/3</span>
+            {comparePets.map((pet) => (
+              <div key={pet.name} className="flex items-center gap-1.5 rounded-lg border border-[#FFC107] bg-white px-2 py-1">
+                <Image src={gag2Images.pet(pet.imageKey)} alt={pet.name} width={20} height={20} className="rounded" />
+                <span className="text-xs font-bold text-[#4b4b4b]">{pet.name}</span>
+                <button onClick={() => toggleCompare(pet.name)} className="text-[10px] text-[#999]">Remove</button>
+              </div>
+            ))}
+            <button onClick={() => setCompare(new Set())} className="ml-auto text-[10px] font-bold text-[#999]">Clear</button>
+          </div>
+          {bestComparePet && (
+            <div className="mt-3 rounded-lg bg-white p-3">
+              <p className="text-xs font-black uppercase text-[#F57F17]">Best pick in this compare</p>
+              <p className="mt-1 text-sm font-bold text-[#4b4b4b]">
+                {bestComparePet.name} is the strongest selected option for {bestComparePet.category}. Tier {bestComparePet.tier}, price {bestComparePet.costSheckles}, ability: {bestComparePet.ability}
+              </p>
             </div>
-          ))}
-          <button onClick={() => setCompare(new Set())} className="ml-auto text-[10px] font-bold text-[#999]">Clear</button>
+          )}
         </div>
       )}
 
-      <div className="mb-4 flex items-center justify-between">
+      <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm font-bold text-[#777]">{filtered.length} of {gag2Pets.length} pets</p>
         <div className="flex gap-1.5">
           {[{ l: "First", p: "Bunny" }, { l: "Growth", p: "Deer" }, { l: "Defend", p: "Bee" }].map((quick) => (

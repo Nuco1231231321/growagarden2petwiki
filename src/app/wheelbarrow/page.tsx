@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
 import type { Metadata } from "next";
 import { gag2Images } from "@/lib/data";
+import { WheelbarrowWorth } from "@/components/wheelbarrow-worth";
 
 export const metadata: Metadata = {
   title: "Grow a Garden 2 Wheelbarrow: What It Does, How to Get & Worth It",
@@ -16,9 +18,37 @@ const beforeBuying = [
   ["4", "Wheelbarrow", "Buy when 500K Sheckles no longer slows your farm upgrades."],
 ];
 
+const faq = [
+  ["What does Wheelbarrow do in Grow a Garden 2?", "Wheelbarrow lets you carry players and move faster during group routes, shop runs, or night coordination."],
+  ["Is Wheelbarrow worth 500K Sheckles?", "Wheelbarrow is worth it after Bunny, Deer, and basic defense are covered. It is usually not the first 500K upgrade."],
+  ["Should I buy Wheelbarrow before Bee?", "Buy Bee or Gnome first if your garden holds expensive crops overnight."],
+  ["Who should buy Wheelbarrow early?", "Players who often play with friends and can recover 500K quickly can buy it earlier."],
+] as const;
+
 export default function WheelbarrowPage() {
   return (
     <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
+      <Script id="wheelbarrow-faq-jsonld" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faq.map(([question, answer]) => ({
+            "@type": "Question",
+            name: question,
+            acceptedAnswer: { "@type": "Answer", text: answer },
+          })),
+        })}
+      </Script>
+      <Script id="wheelbarrow-breadcrumb-jsonld" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://growagarden2pet.wiki" },
+            { "@type": "ListItem", position: 2, name: "Wheelbarrow", item: "https://growagarden2pet.wiki/wheelbarrow" },
+          ],
+        })}
+      </Script>
       <h1 className="text-3xl font-extrabold text-[#2E3B2E]">Grow a Garden 2 Wheelbarrow Guide</h1>
       <p className="mt-2 text-sm text-[#777]">Legendary Gear. Costs 500,000 Sheckles or 129 Robux when it appears in the Gear Shop.</p>
 
@@ -28,6 +58,10 @@ export default function WheelbarrowPage() {
           Buy Wheelbarrow after your income, pets, and night defense are stable. It is useful for group play and movement tricks, but Bunny, Deer, Bee, and better crops usually help your account more first.
         </p>
       </section>
+
+      <div className="mt-6">
+        <WheelbarrowWorth />
+      </div>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <div className="rounded-xl border border-[#3c3c3c]/20 bg-white p-4 text-center">
@@ -118,6 +152,18 @@ export default function WheelbarrowPage() {
           <Link href="/beginner-guide" className="font-semibold text-[#4CAF50] hover:underline">Beginner Route</Link>
         </div>
       </div>
+
+      <section className="mt-8">
+        <h2 className="text-xl font-extrabold text-[#2E3B2E]">FAQ</h2>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
+          {faq.map(([question, answer]) => (
+            <div key={question} className="rounded-xl border border-[#e5e7eb] bg-white p-4">
+              <h3 className="text-sm font-extrabold text-[#4b4b4b]">{question}</h3>
+              <p className="mt-1 text-sm leading-6 text-[#777]">{answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }

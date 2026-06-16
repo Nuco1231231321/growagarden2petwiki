@@ -30,18 +30,14 @@ export default function GearsPage() {
               <table className="w-full text-sm">
                 <thead><tr className="border-b border-[#3c3c3c]/20 bg-[#F9FAFB]"><th className="px-3 py-2 text-left font-bold text-[#777] text-xs">Gear</th><th className="px-3 py-2 text-left font-bold text-[#777] text-xs">Rarity</th><th className="px-3 py-2 text-left font-bold text-[#777] text-xs">Price</th><th className="px-3 py-2 text-left font-bold text-[#777] text-xs">Effect</th></tr></thead>
                 <tbody>
-                  {items.map((g) => {
-                    const imgKey = g.name.toLowerCase().replace(/\s+/g, "-").replace(/[()]/g, "").replace("sign-hello", "sign-full");
-                    const mappedName = imgKey === "common-watering-can" ? "common-watering-can" : imgKey === "uncommon-sprinkler" ? "uncommon-sprinkler-gear-gag-2" : imgKey;
-                    return (
+                  {items.map((g) => (
                       <tr key={g.name} className="border-b border-[#3c3c3c]/10 last:border-0 hover:bg-[#C8E6C9]/5">
                         <td className="px-3 py-2 font-semibold text-[#4b4b4b] text-xs">{g.emoji} {g.name}</td>
                         <td className="px-3 py-2 text-xs text-[#777]">{g.rarity}</td>
                         <td className="px-3 py-2 font-mono text-xs text-[#4b4b4b]">{g.costSheckles}{g.costRobux ? ` / ${g.costRobux}R` : ''}</td>
                         <td className="px-3 py-2 text-xs text-[#777]">{g.effect}</td>
                       </tr>
-                    );
-                  })}
+                  ))}
                 </tbody>
               </table>
             </div>

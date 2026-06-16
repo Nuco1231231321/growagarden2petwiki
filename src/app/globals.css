@@ -11,7 +11,7 @@
   --color-ash: #777777;
   --color-charcoal: #4b4b4b;
   --color-paper: #ffffff;
-  --font-sans: var(--font-nunito), ui-rounded, system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), 'Fira Code', monospace;
+  --font-sans: ui-rounded, "Avenir Next", "Trebuchet MS", system-ui, sans-serif;
+  --font-mono: "SFMono-Regular", "Roboto Mono", "Fira Code", monospace;
   --radius-default: 12px;
 }

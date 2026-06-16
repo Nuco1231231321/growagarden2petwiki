@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Image from "next/image";
 import { gag2Images, gag2TopSeeds } from "@/lib/data";
 
 const SORT_OPTIONS = ["Default", "Price Low", "Price High", "Name"] as const;

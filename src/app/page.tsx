@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { gag2Images } from "@/lib/data";
+import { SiteLookup } from "@/components/site-lookup";
 
 export const metadata: Metadata = {
   title: "Grow a Garden 2 Wiki: Pets, Codes, Seeds, Weather & Gear Guides",
@@ -28,6 +29,8 @@ const featuredGuides = [
 ] as const;
 
 const smallGuides = [
+  { title: "Crop Calculator", href: "/calculator", detail: "Calculate value from weight and mutations", image: gag2Images.seed("mushroom-farm") },
+  { title: "Crop Values", href: "/values", detail: "Compare profit, ROI, rarity, and harvest type", image: gag2Images.seed("venus-fly-trap") },
   { title: "Weather Events", href: "/weather", detail: "What to do during each event", image: gag2Images.hero("mutations") },
   { title: "Mutations", href: "/mutations", detail: "Save valuable crops for boosted payouts", image: gag2Images.hero("mutations") },
   { title: "Night Stealing", href: "/night-stealing", detail: "Steal crops and defend your garden", image: gag2Images.hero("night_stealing") },
@@ -66,7 +69,12 @@ export default function Home() {
             Start with codes, plant the right crops, buy Bunny and Deer, defend at night, and save valuable crops for weather events.
           </p>
 
+          <SiteLookup />
+
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Link href="/calculator" className="inline-flex min-h-12 items-center justify-center rounded-xl border border-b-[4px] border-garden bg-garden px-7 text-center font-black tracking-wide text-white shadow-[0_4px_0_#3d8b40] transition hover:-translate-y-0.5 hover:shadow-[0_6px_0_#3d8b40]">
+              Crop calculator
+            </Link>
             <Link href="/beginner-guide" className="inline-flex min-h-12 items-center justify-center rounded-xl border border-b-[4px] border-garden bg-garden px-7 text-center font-black tracking-wide text-white shadow-[0_4px_0_#3d8b40] transition hover:-translate-y-0.5 hover:shadow-[0_6px_0_#3d8b40]">
               Beginner route
             </Link>
@@ -169,9 +177,9 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-5 grid min-w-0 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {smallGuides.map((guide) => (
-            <Link key={guide.href} href={guide.href} className="group flex items-center gap-4 rounded-xl border border-[#e5e7eb] bg-white p-4 shadow-[0_1px_4px_rgba(0,0,0,0.03)] transition hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,0,0,0.08)]">
+            <Link key={guide.href} href={guide.href} className="group flex min-w-0 items-center gap-3 rounded-xl border border-[#e5e7eb] bg-white p-4 shadow-[0_1px_4px_rgba(0,0,0,0.03)] transition hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,0,0,0.08)] sm:gap-4">
               <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-[#f5f9f3]">
                 <Image src={guide.image} alt={guide.title} fill className="object-cover" sizes="56px" />
               </div>
@@ -179,7 +187,7 @@ export default function Home() {
                 <h3 className="text-base font-extrabold text-soil">{guide.title}</h3>
                 <p className="mt-0.5 truncate text-xs font-medium leading-relaxed text-ash">{guide.detail}</p>
               </div>
-              <span className="shrink-0 text-sm font-black text-garden opacity-0 transition group-hover:opacity-100">Open</span>
+              <span className="hidden shrink-0 text-sm font-black text-garden opacity-0 transition group-hover:opacity-100 sm:inline">Open</span>
             </Link>
           ))}
         </div>

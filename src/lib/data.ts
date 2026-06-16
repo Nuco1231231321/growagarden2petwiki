@@ -292,3 +292,172 @@ export const gag2Badges = [
  { name: 'OG', desc: 'Play during launch week (Jun 12-19, 2026)', category: 'Limited' },
  { name: 'We are so back!', desc: 'Water a plant during launch week', category: 'Limited' },
 ];
+
+// === CROP VALUE DATA ===
+export type GAG2CropRarity = 'Common' | 'Uncommon' | 'Rare' | 'Epic' | 'Legendary' | 'Mythic' | 'Super';
+export type GAG2CropStage = 'early' | 'mid' | 'late';
+
+export interface GAG2Crop {
+ name: string;
+ slug: string;
+ emoji: string;
+ rarity: GAG2CropRarity;
+ seedCost: number | null;
+ baseValue: number;
+ averageWeight: number;
+ harvestType: 'Single' | 'Multi';
+ stage: GAG2CropStage;
+ imageKey?: string;
+}
+
+export const gag2Crops: GAG2Crop[] = [
+ { name: 'Carrot', slug: 'carrot', emoji: '🥕', rarity: 'Common', seedCost: 5, baseValue: 18, averageWeight: 0.35, harvestType: 'Single', stage: 'early' },
+ { name: 'Strawberry', slug: 'strawberry', emoji: '🍓', rarity: 'Common', seedCost: 10, baseValue: 32, averageWeight: 0.45, harvestType: 'Multi', stage: 'early' },
+ { name: 'Blueberry', slug: 'blueberry', emoji: '🫐', rarity: 'Common', seedCost: 15, baseValue: 45, averageWeight: 0.5, harvestType: 'Multi', stage: 'early' },
+ { name: 'Tulip', slug: 'tulip', emoji: '🌷', rarity: 'Uncommon', seedCost: 40, baseValue: 110, averageWeight: 0.65, harvestType: 'Single', stage: 'early' },
+ { name: 'Tomato', slug: 'tomato', emoji: '🍅', rarity: 'Uncommon', seedCost: 120, baseValue: 260, averageWeight: 0.9, harvestType: 'Multi', stage: 'early' },
+ { name: 'Apple', slug: 'apple', emoji: '🍎', rarity: 'Uncommon', seedCost: 400, baseValue: 850, averageWeight: 1.2, harvestType: 'Multi', stage: 'mid' },
+ { name: 'Bamboo', slug: 'bamboo', emoji: '🎋', rarity: 'Rare', seedCost: 700, baseValue: 1800, averageWeight: 2.4, harvestType: 'Multi', stage: 'mid' },
+ { name: 'Corn', slug: 'corn', emoji: '🌽', rarity: 'Rare', seedCost: 2500, baseValue: 5200, averageWeight: 1.8, harvestType: 'Multi', stage: 'mid' },
+ { name: 'Cactus', slug: 'cactus', emoji: '🌵', rarity: 'Rare', seedCost: 5000, baseValue: 9600, averageWeight: 3.2, harvestType: 'Single', stage: 'mid' },
+ { name: 'Pineapple', slug: 'pineapple', emoji: '🍍', rarity: 'Rare', seedCost: 8500, baseValue: 16000, averageWeight: 2.9, harvestType: 'Multi', stage: 'mid', imageKey: 'pineapple-plant' },
+ { name: 'Baby Cactus', slug: 'baby-cactus', emoji: '🌵', rarity: 'Rare', seedCost: null, baseValue: 14500, averageWeight: 2.6, harvestType: 'Multi', stage: 'mid' },
+ { name: 'Horned Melon', slug: 'horned-melon', emoji: '🍈', rarity: 'Rare', seedCost: null, baseValue: 22000, averageWeight: 3.5, harvestType: 'Single', stage: 'mid' },
+ { name: 'Mushroom', slug: 'mushroom', emoji: '🍄', rarity: 'Epic', seedCost: 15000, baseValue: 30000, averageWeight: 2.1, harvestType: 'Multi', stage: 'mid', imageKey: 'mushroom-farm' },
+ { name: 'Green Bean', slug: 'green-bean', emoji: '🫛', rarity: 'Epic', seedCost: 20000, baseValue: 42000, averageWeight: 2.4, harvestType: 'Multi', stage: 'mid' },
+ { name: 'Banana', slug: 'banana', emoji: '🍌', rarity: 'Epic', seedCost: 30000, baseValue: 62000, averageWeight: 2.6, harvestType: 'Multi', stage: 'mid' },
+ { name: 'Grape', slug: 'grape', emoji: '🍇', rarity: 'Epic', seedCost: 50000, baseValue: 93000, averageWeight: 1.9, harvestType: 'Multi', stage: 'mid' },
+ { name: 'Coconut', slug: 'coconut', emoji: '🥥', rarity: 'Epic', seedCost: 70000, baseValue: 126000, averageWeight: 4.5, harvestType: 'Multi', stage: 'mid' },
+ { name: 'Mango', slug: 'mango', emoji: '🥭', rarity: 'Epic', seedCost: 85000, baseValue: 150000, averageWeight: 2.8, harvestType: 'Multi', stage: 'mid' },
+ { name: 'Glow Mushroom', slug: 'glow-mushroom', emoji: '🍄', rarity: 'Epic', seedCost: null, baseValue: 65000, averageWeight: 1.7, harvestType: 'Single', stage: 'mid' },
+ { name: 'Dragon Fruit', slug: 'dragon-fruit', emoji: '🐉', rarity: 'Legendary', seedCost: 120000, baseValue: 250000, averageWeight: 3.1, harvestType: 'Multi', stage: 'late' },
+ { name: 'Acorn', slug: 'acorn', emoji: '🌰', rarity: 'Legendary', seedCost: 500000, baseValue: 900000, averageWeight: 1.1, harvestType: 'Multi', stage: 'late' },
+ { name: 'Cherry', slug: 'cherry', emoji: '🍒', rarity: 'Legendary', seedCost: 950000, baseValue: 1700000, averageWeight: 0.8, harvestType: 'Multi', stage: 'late' },
+ { name: 'Sunflower', slug: 'sunflower', emoji: '🌻', rarity: 'Legendary', seedCost: 5000000, baseValue: 25000000, averageWeight: 7.5, harvestType: 'Multi', stage: 'late' },
+ { name: 'Poison Ivy', slug: 'poison-ivy', emoji: '🌿', rarity: 'Legendary', seedCost: null, baseValue: 25000, averageWeight: 1.5, harvestType: 'Single', stage: 'late' },
+ { name: 'Pomegranate', slug: 'pomegranate', emoji: '🍎', rarity: 'Mythic', seedCost: 12000000, baseValue: 100000000, averageWeight: 3.6, harvestType: 'Multi', stage: 'late' },
+ { name: 'Poison Apple', slug: 'poison-apple', emoji: '🍏', rarity: 'Mythic', seedCost: 25000000, baseValue: 120000000, averageWeight: 2.2, harvestType: 'Multi', stage: 'late' },
+ { name: 'Ghost Pepper', slug: 'ghost-pepper', emoji: '🌶️', rarity: 'Mythic', seedCost: null, baseValue: 150000000, averageWeight: 1.3, harvestType: 'Multi', stage: 'late' },
+ { name: 'Venus Fly Trap', slug: 'venus-fly-trap', emoji: '🪴', rarity: 'Mythic', seedCost: 7000000, baseValue: 80000000, averageWeight: 5.5, harvestType: 'Multi', stage: 'late', imageKey: 'venus-fly-trap' },
+ { name: 'Moon Bloom', slug: 'moon-bloom', emoji: '🌙', rarity: 'Super', seedCost: 65000000, baseValue: 500000000, averageWeight: 4.8, harvestType: 'Multi', stage: 'late' },
+ { name: "Dragon's Breath", slug: 'dragons-breath', emoji: '🔥', rarity: 'Super', seedCost: 90000000, baseValue: 750000000, averageWeight: 6.2, harvestType: 'Multi', stage: 'late' },
+];
+
+export interface GAG2Mutation {
+ name: string;
+ slug: string;
+ multiplier: number;
+ category: 'primary' | 'weather';
+ action: string;
+}
+
+export const gag2Mutations: GAG2Mutation[] = [
+ { name: 'None', slug: 'none', multiplier: 1, category: 'primary', action: 'Use normal sell value.' },
+ { name: 'Gold', slug: 'gold', multiplier: 15, category: 'primary', action: 'Sell strong crops or compare against Rainbow plans.' },
+ { name: 'Rainbow', slug: 'rainbow', multiplier: 40, category: 'primary', action: 'Save high-value multi-harvest crops for the biggest payout.' },
+ { name: 'Frozen', slug: 'frozen', multiplier: 40, category: 'weather', action: 'Keep valuable crops planted during Snowfall.' },
+ { name: 'Electric', slug: 'electric', multiplier: 70, category: 'weather', action: 'Use Lightning windows for your best crops.' },
+ { name: 'Starstruck', slug: 'starstruck', multiplier: 45, category: 'weather', action: 'Wait until Starfall ends, then sell boosted crops.' },
+ { name: 'Bloodlit', slug: 'bloodlit', multiplier: 60, category: 'weather', action: 'Defend before leaving valuable crops out at night.' },
+];
+
+export function formatSheckles(value: number): string {
+ if (!Number.isFinite(value)) return '0';
+ if (value >= 1_000_000_000) return `${(value / 1_000_000_000).toFixed(value >= 10_000_000_000 ? 0 : 1)}B`;
+ if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(value >= 10_000_000 ? 0 : 1)}M`;
+ if (value >= 1_000) return `${(value / 1_000).toFixed(value >= 10_000 ? 0 : 1)}K`;
+ return Math.round(value).toLocaleString('en-US');
+}
+
+export function calculateCropValue({
+ crop,
+ weight,
+ quantity,
+ primaryMultiplier,
+ weatherMultiplier,
+ bargainBonus,
+}: {
+ crop: GAG2Crop;
+ weight: number;
+ quantity: number;
+ primaryMultiplier: number;
+ weatherMultiplier: number;
+ bargainBonus: number;
+}) {
+ const safeWeight = Math.max(weight, 0.01);
+ const safeQuantity = Math.max(quantity, 1);
+ const weightFactor = Math.pow(safeWeight / crop.averageWeight, 2);
+ const mutationMultiplier = primaryMultiplier * weatherMultiplier;
+ const bargainMultiplier = 1 + Math.max(bargainBonus, 0) / 100;
+ const singleValue = crop.baseValue * weightFactor * mutationMultiplier * bargainMultiplier;
+ const totalValue = singleValue * safeQuantity;
+ const seedCost = crop.seedCost ?? 0;
+ const netProfit = totalValue - seedCost;
+ const roi = seedCost > 0 ? (netProfit / seedCost) * 100 : null;
+ return { weightFactor, mutationMultiplier, singleValue, totalValue, netProfit, roi };
+}
+
+export interface GAG2LookupItem {
+ type: 'Pet' | 'Gear' | 'Seed' | 'Crop' | 'Code' | 'Egg' | 'Badge' | 'System' | 'Page';
+ title: string;
+ href: string;
+ summary: string;
+ keywords: string[];
+}
+
+const pageLookups: GAG2LookupItem[] = [
+ { type: 'Page', title: 'Crop Value Calculator', href: '/calculator', summary: 'Calculate crop sell value from weight, quantity, mutations, and bargain bonus.', keywords: ['calculator', 'crop value', 'sell value', 'profit', 'roi'] },
+ { type: 'Page', title: 'Crop Values & ROI', href: '/values', summary: 'Compare crop base value, seed cost, profit, ROI, rarity, and harvest type.', keywords: ['values', 'value list', 'roi', 'best crops', 'profit'] },
+ { type: 'Page', title: 'Wheelbarrow Worth Guide', href: '/wheelbarrow', summary: 'Check what Wheelbarrow does and whether to buy it before pets or defense.', keywords: ['wheelbarrow', 'wheel barrow', 'worth', '500k', '129 robux'] },
+ { type: 'Page', title: 'Pet Buy Order', href: '/pets', summary: 'Choose the next pet for speed, growth, defense, mutation income, or night stealing.', keywords: ['pets', 'pet wiki', 'best pet', 'buy order', 'bunny', 'deer'] },
+ { type: 'Page', title: 'Codes', href: '/codes', summary: 'Redeem active Grow a Garden 2 codes and check reward steps.', keywords: ['codes', 'teamgreenbean', 'free seeds'] },
+ { type: 'System', title: 'Weather Events', href: '/weather', summary: 'Use weather windows to boost crop value and plan when to sell.', keywords: ['weather', 'lightning', 'snowfall', 'rainbow', 'blood moon', 'midas moon'] },
+ { type: 'System', title: 'Mutations', href: '/mutations', summary: 'Plan Gold, Rainbow, Electric, Frozen, Starstruck, and Bloodlit crop boosts.', keywords: ['mutation', 'gold mutation', 'rainbow mutation', 'electric mutation', 'frozen'] },
+ { type: 'System', title: 'Badges', href: '/badges', summary: 'Find badge unlock requirements for pets, crops, fruit weight, and limited tasks.', keywords: ['badge', 'badges', 'achievement', '100kg', '1000ft'] },
+];
+
+export const gag2LookupIndex: GAG2LookupItem[] = [
+ ...pageLookups,
+ ...gag2Pets.map((pet) => ({
+  type: 'Pet' as const,
+  title: pet.name,
+  href: '/pets',
+  summary: `${pet.rarity} ${pet.category} pet. ${pet.ability}`,
+  keywords: [pet.name, pet.rarity, pet.category, pet.ability],
+ })),
+ ...gag2Gears.map((gear) => ({
+  type: 'Gear' as const,
+  title: gear.name,
+  href: gear.name === 'Wheelbarrow' ? '/wheelbarrow' : '/gears',
+  summary: `${gear.rarity} ${gear.category} gear. ${gear.effect}`,
+  keywords: [gear.name, gear.rarity, gear.category, gear.effect, gear.costSheckles],
+ })),
+ ...gag2Crops.map((crop) => ({
+  type: 'Crop' as const,
+  title: crop.name,
+  href: '/values',
+  summary: `${crop.rarity} ${crop.harvestType.toLowerCase()} crop. Base value ${formatSheckles(crop.baseValue)} Sheckles.`,
+  keywords: [crop.name, crop.rarity, crop.stage, crop.harvestType, 'crop', 'seed', 'value'],
+ })),
+ ...gag2Codes.map((code) => ({
+  type: 'Code' as const,
+  title: code.code,
+  href: '/codes',
+  summary: `${code.reward}. Verified ${code.verified}.`,
+  keywords: [code.code, code.reward, 'code', 'codes'],
+ })),
+ ...gag2Eggs.map((egg) => ({
+  type: 'Egg' as const,
+  title: egg.name,
+  href: '/eggs',
+  summary: `${egg.rarity} egg from ${egg.source}. Includes ${egg.pets.map((pet) => pet.name).slice(0, 3).join(', ')}.`,
+  keywords: [egg.name, egg.rarity, egg.source, ...egg.pets.map((pet) => pet.name)],
+ })),
+ ...gag2Badges.map((badge) => ({
+  type: 'Badge' as const,
+  title: badge.name,
+  href: '/badges',
+  summary: badge.desc,
+  keywords: [badge.name, badge.category, badge.desc, 'badge', 'achievement'],
+ })),
+];

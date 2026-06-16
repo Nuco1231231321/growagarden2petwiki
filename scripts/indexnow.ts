@@ -8,6 +8,8 @@ const KEY = "gag2wiki2026"; // Change this to your own key
 const PAGES = [
   "/",
   "/pets",
+  "/calculator",
+  "/values",
   "/codes",
   "/wheelbarrow",
   "/beginner-guide",
@@ -18,6 +20,8 @@ const PAGES = [
   "/props",
   "/guild",
   "/seed-packs",
+  "/eggs",
+  "/badges",
   "/privacy-policy",
   "/terms",
 ];

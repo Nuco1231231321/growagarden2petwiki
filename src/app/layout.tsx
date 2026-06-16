@@ -1,22 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
-import { JetBrains_Mono, Nunito } from "next/font/google";
 import "./globals.css";
-
-const nunito = Nunito({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  variable: "--font-nunito",
-  display: "swap",
-});
-
-const jetBrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  variable: "--font-jetbrains-mono",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://growagarden2pet.wiki"),
@@ -57,10 +42,11 @@ export const metadata: Metadata = {
 };
 
 const navItems = [
-  ["Pets", "/pets"], ["Codes", "/codes"], ["Seeds", "/seeds"],
-  ["Gears", "/gears"], ["Wheelbarrow", "/wheelbarrow"], ["Beginner", "/beginner-guide"],
+  ["Pets", "/pets"], ["Calculator", "/calculator"], ["Values", "/values"],
+  ["Codes", "/codes"], ["Wheelbarrow", "/wheelbarrow"], ["Seeds", "/seeds"],
 ] as const;
 const moreItems = [
+  ["Beginner", "/beginner-guide"], ["Gears", "/gears"],
   ["Eggs", "/eggs"], ["Badges", "/badges"], ["Mutations", "/mutations"],
   ["Night", "/night-stealing"], ["Props", "/props"], ["Guild", "/guild"],
   ["Seed Packs", "/seed-packs"],
@@ -68,7 +54,7 @@ const moreItems = [
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${nunito.variable} ${jetBrainsMono.variable} h-full scroll-smooth antialiased`}>
+    <html lang="en" className="h-full scroll-smooth antialiased">
       <body className="min-h-full flex flex-col overflow-x-hidden bg-paper font-sans text-charcoal selection:bg-seedling selection:text-forest">
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-J8QVNGLN2X" strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { gag2Eggs, gag2Pets, gag2Images } from "@/lib/data";
 import type { Metadata } from "next";
 import { RelatedGuides } from "@/components/related-guides";
@@ -71,7 +70,7 @@ export default function EggsPage() {
     <p className="text-sm font-extrabold text-[#F57F17]">💡 Pro Tip</p>
     <p className="mt-1 text-sm text-[#F57F17]/80">
       Epic Egg is not yet released. Save your Guild points. When it launches, the 30% Unicorn and 60% Deer odds make it
-      significantly better than Common Egg for building your pet collection. Common Egg's best realistic value is Deer (20%)
+      significantly better than Common Egg for building your pet collection. Common Egg&apos;s best realistic value is Deer (20%)
       and the tiny chance of Unicorn (0.3%) or Raccoon (0.2%).
     </p>
    </div>

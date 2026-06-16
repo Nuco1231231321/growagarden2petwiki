@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { gag2Images } from "@/lib/data";
 import type { Metadata } from "next";
 
@@ -49,12 +48,12 @@ export default function GuildPage() {
       </ol>
 
       <h2 className="text-xl font-extrabold text-[#2E3B2E] mt-8 mb-3">Weekly Rewards</h2>
-      <p className="text-sm text-[#777] leading-relaxed">Guilds compete based on the <strong>combined weight of every member's heaviest single crop</strong>. Each member contributes 1 point per gram of their heaviest crop. Higher-ranked guilds earn exclusive rewards at the end of each week.</p>
-      <p className="mt-3 text-sm text-[#777]"><strong>Joining is free</strong> — you don't need to create a guild to participate. Find an active guild and contribute your heaviest crops to help the team rank higher. Guilds with active farmers consistently out-earn solo players.</p>
+      <p className="text-sm text-[#777] leading-relaxed">Guilds compete based on the <strong>combined weight of every member&apos;s heaviest single crop</strong>. Each member contributes 1 point per gram of their heaviest crop. Higher-ranked guilds earn exclusive rewards at the end of each week.</p>
+      <p className="mt-3 text-sm text-[#777]"><strong>Joining is free</strong> — you don&apos;t need to create a guild to participate. Find an active guild and contribute your heaviest crops to help the team rank higher. Guilds with active farmers consistently out-earn solo players.</p>
 
       <h2 className="text-xl font-extrabold text-[#2E3B2E] mt-8 mb-3">Pro Tips</h2>
       <ul className="space-y-2 text-sm text-[#777]">
-        <li>• <strong>Accept invites at your garden mailbox</strong> — NOT at Gilbert's stand. This is the #1 confusion point.</li>
+        <li>• <strong>Accept invites at your garden mailbox</strong> — NOT at Gilbert&apos;s stand. This is the #1 confusion point.</li>
         <li>• <strong>Elders can invite but cannot disband</strong> — assign Elder to trusted members for recruiting.</li>
         <li>• <strong>Only Owners can disband</strong> — if you create a guild, you cannot leave without disbanding it first.</li>
         <li>• <strong>Grow the heaviest crop possible</strong> — use Super Sprinklers, Deer pets, and mutations to maximize crop weight for guild ranking.</li>
