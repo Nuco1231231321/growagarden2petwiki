@@ -35,7 +35,7 @@ export default function BeginnerGuidePage() {
       <div className="flex items-center gap-4 mb-6">
         <Image src={gag2Images.icon} alt="GAG2" width={56} height={56} className="rounded-xl" />
         <div>
-          <h1 className="text-3xl font-extrabold text-[#2E3B2E]">Beginner Guide</h1>
+          <h1 className="text-3xl font-extrabold text-[#2E3B2E]">Grow a Garden 2 Beginner Guide</h1>
           <p className="text-sm text-[#777]">Your first hour: from 0 Sheckles to a thriving garden</p>
         </div>
       </div>

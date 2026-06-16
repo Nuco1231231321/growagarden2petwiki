@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function SeedPacksPage() {
   return (
     <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
-      <h1 className="text-3xl font-extrabold text-[#2E3B2E]">Seed Packs Guide</h1>
+      <h1 className="text-3xl font-extrabold text-[#2E3B2E]">Grow a Garden 2 Seed Packs Guide</h1>
       <p className="mt-2 text-sm text-[#777]">
         Robux-only packs with exclusive seeds not available in the regular Seed Shop. Random rolls, no pity system.
       </p>

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function WheelbarrowPage() {
   return (
     <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
-      <h1 className="text-3xl font-extrabold text-[#2E3B2E]">Wheelbarrow Guide</h1>
+      <h1 className="text-3xl font-extrabold text-[#2E3B2E]">Grow a Garden 2 Wheelbarrow Guide</h1>
       <p className="mt-2 text-sm text-[#777]">Legendary Gear · 500,000 Sheckles / 129 Robux</p>
 
       <div className="mt-4 p-4 rounded-xl border-2 border-[#FFC107]/40 bg-[#FFF8E1]">

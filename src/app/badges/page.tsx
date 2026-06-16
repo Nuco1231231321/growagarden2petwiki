@@ -18,7 +18,7 @@ export default function BadgesPage() {
    <div className="flex items-center gap-4 mb-6">
     <span className="text-5xl">🏆</span>
     <div>
-     <h1 className="text-3xl sm:text-4xl font-extrabold text-[#2E3B2E]">Badges & Achievements</h1>
+     <h1 className="text-3xl sm:text-4xl font-extrabold text-[#2E3B2E]">Grow a Garden 2 Badges & Achievements</h1>
      <p className="text-sm text-[#777]">23 badges · plant height, fruit weight, pets, mutations, limited events</p>
     </div>
    </div>

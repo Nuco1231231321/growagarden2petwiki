@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function SeedsPage() {
  return (
   <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
-   <h1 className="text-3xl sm:text-4xl font-extrabold text-[#2E3B2E]">Seeds & Plants Guide</h1>
+   <h1 className="text-3xl sm:text-4xl font-extrabold text-[#2E3B2E]">Grow a Garden 2 Seeds & Plants Guide</h1>
    <p className="mt-2 text-sm text-[#777]">From Sam's Seed Shop (rotates every 5 min). Multi-harvest = keeps producing.</p>
 
    <div className="mt-6 grid gap-2 sm:grid-cols-3">

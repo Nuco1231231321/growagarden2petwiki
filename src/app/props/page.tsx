@@ -26,7 +26,7 @@ const crates = [
 export default function PropsPage() {
   return (
     <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
-      <h1 className="text-3xl font-extrabold text-[#2E3B2E]">Props & Crates Guide</h1>
+      <h1 className="text-3xl font-extrabold text-[#2E3B2E]">Grow a Garden 2 Props & Crates Guide</h1>
       <p className="mt-2 text-sm text-[#777]">14 crate types from <strong>Charlotte</strong> at the Props Shop (rotates every 5 min). Sheckles or Robux.</p>
 
       <h2 className="text-xl font-extrabold text-[#2E3B2E] mt-6 mb-3">All Crates</h2>

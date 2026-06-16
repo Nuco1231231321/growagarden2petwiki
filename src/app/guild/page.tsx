@@ -14,7 +14,7 @@ export default function GuildPage() {
     <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
       <div className="flex items-center gap-4 mb-6">
         <Image src={gag2Images.icon} alt="GAG2" width={56} height={56} className="rounded-xl" />
-        <div><h1 className="text-3xl font-extrabold text-[#2E3B2E]">Guilds Guide</h1><p className="text-sm text-[#777]">Teams of up to 50 players — compete for weekly rewards</p></div>
+        <div><h1 className="text-3xl font-extrabold text-[#2E3B2E]">Grow a Garden 2 Guilds Guide</h1><p className="text-sm text-[#777]">Teams of up to 50 players — compete for weekly rewards</p></div>
       </div>
 
       <div className="p-4 rounded-xl border-2 border-[#E53935]/20 bg-[#FFEBEE] mb-6">

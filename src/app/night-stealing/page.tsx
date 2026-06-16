@@ -15,7 +15,7 @@ export default function NightStealingPage() {
       <div className="flex items-center gap-4 mb-6">
         <Image src={gag2Images.icon} alt="GAG2" width={56} height={56} className="rounded-xl" />
         <div>
-          <h1 className="text-3xl font-extrabold text-[#2E3B2E]">Night Stealing Guide</h1>
+          <h1 className="text-3xl font-extrabold text-[#2E3B2E]">Grow a Garden 2 Night Stealing Guide</h1>
           <p className="text-sm text-[#777]">Night is when the real game begins — crops are vulnerable</p>
         </div>
       </div>

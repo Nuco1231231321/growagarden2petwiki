@@ -29,7 +29,7 @@ const weather = [
 export default function MutationsPage() {
   return (
     <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
-      <h1 className="text-3xl font-extrabold text-[#2E3B2E]">Mutations Guide</h1>
+      <h1 className="text-3xl font-extrabold text-[#2E3B2E]">Grow a Garden 2 Mutations Guide</h1>
       <div className="mt-3 rounded-xl border-2 border-[#FFC107]/40 bg-[#FFF8E1] p-4">
         <p className="text-sm font-extrabold text-[#F57F17]">⚠️ Can you stack mutations? No.</p>
         <p className="mt-1 text-sm text-[#F57F17]/80">Unlike Grow a Garden 1, <strong>only one mutation per crop</strong> is allowed in GAG2. When a new mutation applies, it <strong>replaces</strong> the existing one. Focus on getting the single highest-value mutation instead of trying to combine them.</p>

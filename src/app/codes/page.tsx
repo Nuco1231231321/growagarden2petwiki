@@ -16,7 +16,7 @@ export default function CodesPage() {
       <div className="flex items-center gap-4 mb-6">
         <Image src={gag2Images.icon} alt="GAG2" width={56} height={56} className="rounded-xl" />
         <div>
-          <h1 className="text-3xl font-extrabold text-[#2E3B2E]">Active Codes</h1>
+          <h1 className="text-3xl font-extrabold text-[#2E3B2E]">Grow a Garden 2 Codes</h1>
           <p className="text-sm text-[#777]">Verified June 15, 2026 · Updated daily</p>
         </div>
       </div>

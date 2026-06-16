@@ -18,7 +18,7 @@ const robuxGears = [
 export default function GearsPage() {
   return (
     <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
-      <h1 className="text-3xl font-extrabold text-[#2E3B2E]">All Gears Guide</h1>
+      <h1 className="text-3xl font-extrabold text-[#2E3B2E]">Grow a Garden 2 Gears Guide</h1>
       <p className="mt-2 text-sm text-[#777]">Gears from <strong>George</strong> at the Gear Shop (rotates every 5 min). Some also purchasable with Robux. {gag2Gears.length} Sheckles gears + 4 Robux-only.</p>
 
       <div className="mt-4 p-4 rounded-xl border-2 border-[#42A5F5]/20 bg-[#E3F2FD]">

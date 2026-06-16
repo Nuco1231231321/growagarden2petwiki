@@ -20,7 +20,7 @@ export default function EggsPage() {
    <div className="flex items-center gap-4 mb-6">
     <span className="text-5xl">🥚</span>
     <div>
-     <h1 className="text-3xl sm:text-4xl font-extrabold text-[#2E3B2E]">Egg Hatching Guide</h1>
+     <h1 className="text-3xl sm:text-4xl font-extrabold text-[#2E3B2E]">Grow a Garden 2 Egg Hatching Guide</h1>
      <p className="text-sm text-[#777]">Get eggs from Guild rewards · Place in garden · Wait to hatch</p>
     </div>
    </div>

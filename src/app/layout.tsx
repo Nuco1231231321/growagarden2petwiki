@@ -57,12 +57,13 @@ export const metadata: Metadata = {
 };
 
 const navItems = [
-  ["Pets", "/pets"],
-  ["Eggs", "/eggs"],
-  ["Codes", "/codes"],
-  ["Seeds", "/seeds"],
-  ["Gears", "/gears"],
-  ["Beginner", "/beginner-guide"],
+  ["Pets", "/pets"], ["Codes", "/codes"], ["Seeds", "/seeds"],
+  ["Gears", "/gears"], ["Wheelbarrow", "/wheelbarrow"], ["Beginner", "/beginner-guide"],
+] as const;
+const moreItems = [
+  ["Eggs", "/eggs"], ["Badges", "/badges"], ["Mutations", "/mutations"],
+  ["Night", "/night-stealing"], ["Props", "/props"], ["Guild", "/guild"],
+  ["Seed Packs", "/seed-packs"],
 ] as const;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -104,21 +105,22 @@ gtag('config', 'G-J8QVNGLN2X');`}
                   {label}
                 </Link>
               ))}
+              <details className="relative inline-flex">
+                <summary className="cursor-pointer list-none rounded-xl border-2 border-transparent px-3 py-2 text-sm font-extrabold text-charcoal transition-colors hover:border-sprout hover:text-garden">More ▾</summary>
+                <div className="absolute right-0 top-full mt-1 w-40 rounded-xl border-2 border-graphite bg-white p-2 shadow-[0_8px_24px_rgba(0,0,0,0.12)] z-50">
+                  {moreItems.map(([label, href]) => (
+                    <Link key={href} href={href} className="block rounded-lg px-3 py-1.5 text-sm font-bold text-charcoal hover:bg-[#f1f8ee] hover:text-garden">{label}</Link>
+                  ))}
+                </div>
+              </details>
             </nav>
-
-            <Link
-              href="/pets"
-              className="hidden min-h-0 items-center justify-center rounded-xl border-2 border-b-[5px] border-sprout bg-white px-4 py-2 text-sm font-black tracking-wide text-forest transition hover:translate-y-px hover:border-garden md:inline-flex"
-            >
-              Guides
-            </Link>
 
             <details className="relative md:hidden">
               <summary className="list-none rounded-xl border-2 border-b-[5px] border-sprout bg-white px-4 py-2 text-sm font-black tracking-wide text-forest shadow-[0_4px_0_#d9ead5] transition hover:translate-y-px hover:border-garden">
                 Menu
               </summary>
-              <div className="absolute right-0 top-[calc(100%+10px)] w-48 rounded-2xl border-2 border-graphite bg-white p-2 shadow-[0_16px_30px_rgba(0,0,0,0.12)]">
-                {navItems.map(([label, href]) => (
+              <div className="absolute right-0 top-[calc(100%+10px)] w-48 rounded-2xl border-2 border-graphite bg-white p-2 shadow-[0_16px_30px_rgba(0,0,0,0.12)] max-h-[80vh] overflow-y-auto">
+                {[...navItems, ...moreItems].map(([label, href]) => (
                   <Link
                     key={href}
                     href={href}

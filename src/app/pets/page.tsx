@@ -18,7 +18,7 @@ export default function PetsPage() {
       <div className="flex items-center gap-4 mb-6">
         <Image src={gag2Images.pet("bunny")} alt="Bunny" width={64} height={64} className="rounded-xl" />
         <div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#2E3B2E]">All Pets Guide</h1>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#2E3B2E]">Grow a Garden 2 Pets Guide</h1>
           <p className="text-sm text-[#777]">13 pets · filter by rarity, role, tier · sort by price</p>
         </div>
       </div>
