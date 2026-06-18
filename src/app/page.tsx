@@ -42,6 +42,32 @@ const smallGuides = [
   { title: "Badges", href: "/badges", detail: "Achievement list and unlock tasks", image: gag2Images.pet("golden-dragonfly") },
 ] as const;
 
+const popularSearches = [
+  ["Wheelbarrow", "/wheelbarrow"],
+  ["Codes", "/codes"],
+  ["Eggs", "/eggs"],
+  ["Pets Tier List", "/pets"],
+  ["Best Seeds", "/seeds"],
+  ["Weather Events", "/weather"],
+  ["Crop Calculator", "/calculator"],
+  ["Crop Values", "/values"],
+] as const;
+
+const guideGroups = [
+  { group: "Start Here", links: [["Beginner Route", "/beginner-guide"], ["Codes", "/codes"], ["GAG2 Wiki", "/"]] },
+  { group: "Items & Gear", links: [["Wheelbarrow", "/wheelbarrow"], ["All Gears", "/gears"], ["Props & Crates", "/props"]] },
+  { group: "Pets & Eggs", links: [["Pets Tier List", "/pets"], ["Egg Hatching", "/eggs"], ["Badges", "/badges"]] },
+  { group: "Farming & Weather", links: [["Best Seeds", "/seeds"], ["Crop Calculator", "/calculator"], ["Crop Values", "/values"], ["Weather Events", "/weather"], ["Mutations", "/mutations"]] },
+  { group: "PvP & Defense", links: [["Night Stealing", "/night-stealing"], ["Guilds", "/guild"], ["Defense Pets", "/pets"]] },
+] as const;
+
+const latestGuides = [
+  { title: "Wheelbarrow", href: "/wheelbarrow", detail: "What it does, how to get it, and whether it is worth 500K." },
+  { title: "Codes", href: "/codes", detail: "Active code, redeem steps, and fixes when a code does not work." },
+  { title: "Eggs", href: "/eggs", detail: "How to get eggs, Common Egg odds, and best egg rewards." },
+  { title: "Seeds", href: "/seeds", detail: "Best seeds, plant tier list, and what to buy first." },
+] as const;
+
 const facts = [
   ["Game", "Grow a Garden 2"],
   ["Platform", "Roblox"],
@@ -66,8 +92,16 @@ export default function Home() {
           </h1>
 
           <p className="mt-5 max-w-xl text-base font-semibold leading-7 text-[#4a6654] sm:text-lg sm:leading-8">
-            Start with codes, plant the right crops, buy Bunny and Deer, defend at night, and save valuable crops for weather events.
+            GAG2 Wiki hub for codes, pets tier list, eggs, wheelbarrow, best seeds, weather events, night defense, and every route you need before spending Sheckles.
           </p>
+
+          <div className="mt-5 flex flex-wrap gap-2">
+            {popularSearches.map(([label, href]) => (
+              <Link key={href} href={href} className="rounded-full border border-[#d7e5d3] bg-white px-3 py-1.5 text-xs font-black text-[#2d6a3f] shadow-sm transition hover:-translate-y-0.5 hover:border-garden">
+                {label}
+              </Link>
+            ))}
+          </div>
 
           <SiteLookup />
 
@@ -177,9 +211,9 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="mt-5 grid min-w-0 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {smallGuides.map((guide) => (
-            <Link key={guide.href} href={guide.href} className="group flex min-w-0 items-center gap-3 rounded-xl border border-[#e5e7eb] bg-white p-4 shadow-[0_1px_4px_rgba(0,0,0,0.03)] transition hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,0,0,0.08)] sm:gap-4">
+            <Link key={guide.href} href={guide.href} className="group flex items-center gap-4 rounded-xl border border-[#e5e7eb] bg-white p-4 shadow-[0_1px_4px_rgba(0,0,0,0.03)] transition hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,0,0,0.08)]">
               <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-[#f5f9f3]">
                 <Image src={guide.image} alt={guide.title} fill className="object-cover" sizes="56px" />
               </div>
@@ -187,7 +221,43 @@ export default function Home() {
                 <h3 className="text-base font-extrabold text-soil">{guide.title}</h3>
                 <p className="mt-0.5 truncate text-xs font-medium leading-relaxed text-ash">{guide.detail}</p>
               </div>
-              <span className="hidden shrink-0 text-sm font-black text-garden opacity-0 transition group-hover:opacity-100 sm:inline">Open</span>
+              <span className="shrink-0 text-sm font-black text-garden opacity-0 transition group-hover:opacity-100">Open</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto w-[calc(100%-32px)] max-w-[1200px] py-8 sm:w-[calc(100%-48px)]">
+        <div className="mb-7">
+          <p className="text-sm font-black uppercase tracking-[0.12em] text-garden">Wiki directory</p>
+          <h2 className="text-3xl font-black tracking-tight text-soil sm:text-4xl">Browse by player goal</h2>
+        </div>
+        <div className="grid gap-4 md:grid-cols-5">
+          {guideGroups.map((group) => (
+            <div key={group.group} className="rounded-xl border border-[#e5e7eb] bg-white p-4">
+              <h3 className="text-sm font-black uppercase tracking-[0.12em] text-[#4CAF50]">{group.group}</h3>
+              <div className="mt-3 grid gap-2">
+                {group.links.map(([label, href]) => (
+                  <Link key={`${group.group}-${href}-${label}`} href={href} className="text-sm font-extrabold text-[#2E3B2E] hover:text-garden hover:underline">
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto w-[calc(100%-32px)] max-w-[1200px] py-8 sm:w-[calc(100%-48px)]">
+        <div className="mb-7">
+          <p className="text-sm font-black uppercase tracking-[0.12em] text-garden">Latest GAG2 guides</p>
+          <h2 className="text-3xl font-black tracking-tight text-soil sm:text-4xl">Start with the pages players search most</h2>
+        </div>
+        <div className="grid gap-4 md:grid-cols-4">
+          {latestGuides.map((guide) => (
+            <Link key={guide.href} href={guide.href} className="rounded-xl border border-[#e5e7eb] bg-white p-5 shadow-[0_2px_10px_rgba(0,0,0,0.04)] transition hover:-translate-y-1 hover:shadow-[0_10px_24px_rgba(0,0,0,0.08)]">
+              <h3 className="text-lg font-black text-soil">{guide.title}</h3>
+              <p className="mt-2 text-sm font-medium leading-6 text-charcoal">{guide.detail}</p>
             </Link>
           ))}
         </div>

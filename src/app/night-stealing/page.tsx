@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { gag2Images } from "@/lib/data";
 import { RelatedGuides } from "@/components/related-guides";
+import { Breadcrumbs, GuideJsonLd } from "@/components/seo-helpers";
 
 export const metadata: Metadata = {
   title: "Grow a Garden 2 Night Stealing: How to Steal & Defend Your Garden",
@@ -9,9 +10,38 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://growagarden2pet.wiki/night-stealing" },
 };
 
+const breadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "PvP & Defense", href: "/night-stealing" },
+  { name: "Night Stealing", href: "/night-stealing" },
+];
+
+const defenseSetup = [
+  ["Starter defense", "Harvest valuable crops before night and place Gnome near your best plants."],
+  ["Pet defense", "Use Bee before your garden starts holding expensive crops overnight."],
+  ["Prop defense", "Add Bear Traps, fences, and Owner Door when your crop value justifies the cost."],
+  ["Endgame defense", "Use Black Dragon or Ice Serpent when thieves target your garden often."],
+];
+
+const stealingVsDefending = [
+  ["Playstyle", "Stealing", "Defending"],
+  ["Goal", "Take high-value crops from weak gardens", "Keep your own boosted crops safe"],
+  ["Best tools", "Speed Mushroom, Teleporter, Raccoon", "Bee, Gnome, Bear Traps, fences"],
+  ["Risk", "Getting trapped or wasting night time", "Overspending before crops are valuable enough"],
+  ["Best timing", "When targets are open and owner is distracted", "Before dusk and during weather nights"],
+];
+
 export default function NightStealingPage() {
   return (
     <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
+      <GuideJsonLd
+        id="night-stealing"
+        title="Grow a Garden 2 Night Stealing Guide"
+        description="Night stealing guide for day/night cycle, how to steal, best defense setup, Bee, Gnome, Bear Traps, fences, and defensive pets."
+        path="/night-stealing"
+        breadcrumbs={breadcrumbs}
+      />
+      <Breadcrumbs items={breadcrumbs} />
       <div className="mb-6 flex items-center gap-4">
         <Image src={gag2Images.icon} alt="Grow a Garden 2 icon" width={56} height={56} className="rounded-xl" />
         <div>
@@ -28,6 +58,9 @@ export default function NightStealingPage() {
       </section>
 
       <h2 className="mt-8 mb-3 text-xl font-extrabold text-[#2E3B2E]">Day/Night Cycle</h2>
+      <p className="mb-3 text-sm leading-6 text-[#777]">
+        Day is for farming and upgrades. Dusk is the warning window. Night is when stealing and defense matter, so the best players decide before dark whether to harvest, defend, or raid.
+      </p>
       <div className="grid gap-3 sm:grid-cols-2">
         {[
           ["Daytime", "Plant, grow, sell, and upgrade. Stealing is not the focus."],
@@ -75,6 +108,35 @@ export default function NightStealingPage() {
                 <td className="px-3 py-2 font-bold text-[#4b4b4b]">{row[0]}</td>
                 <td className="px-3 py-2 text-xs text-[#777]">{row[1]}</td>
                 <td className="px-3 py-2 text-xs text-[#777]">{row[2]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2 className="mt-8 mb-3 text-xl font-extrabold text-[#2E3B2E]">Best Defense Setup</h2>
+      <div className="grid gap-3 sm:grid-cols-2">
+        {defenseSetup.map(([title, body]) => (
+          <div key={title} className="rounded-xl border border-[#e5e7eb] bg-white p-4">
+            <h3 className="text-sm font-extrabold text-[#2E3B2E]">{title}</h3>
+            <p className="mt-1 text-sm leading-6 text-[#777]">{body}</p>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="mt-8 mb-3 text-xl font-extrabold text-[#2E3B2E]">Stealing vs Defending</h2>
+      <div className="overflow-x-auto rounded-xl border border-[#e5e7eb] bg-white">
+        <table className="w-full text-sm">
+          <tbody>
+            {stealingVsDefending.map((row, index) => (
+              <tr key={row[0]} className="border-b border-[#e5e7eb] last:border-0">
+                {row.map((cell) => (
+                  index === 0 ? (
+                    <th key={cell} className="bg-[#F9FAFB] px-3 py-2 text-left text-xs font-bold text-[#777]">{cell}</th>
+                  ) : (
+                    <td key={cell} className="px-3 py-2 text-xs text-[#777] first:font-bold first:text-[#4b4b4b]">{cell}</td>
+                  )
+                ))}
               </tr>
             ))}
           </tbody>

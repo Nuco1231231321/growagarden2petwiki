@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import Script from "next/script";
 import type { Metadata } from "next";
 import { gag2Images } from "@/lib/data";
 import { WheelbarrowWorth } from "@/components/wheelbarrow-worth";
+import { Breadcrumbs, GuideJsonLd } from "@/components/seo-helpers";
 
 export const metadata: Metadata = {
   title: "Grow a Garden 2 Wheelbarrow: What It Does, How to Get & Worth It",
@@ -18,49 +18,74 @@ const beforeBuying = [
   ["4", "Wheelbarrow", "Buy when 500K Sheckles no longer slows your farm upgrades."],
 ];
 
+const breadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "Gears", href: "/gears" },
+  { name: "Wheelbarrow", href: "/wheelbarrow" },
+];
+
+const quickFacts = [
+  ["Cost", "500,000 Sheckles / 129 Robux"],
+  ["Rarity", "Legendary Gear"],
+  ["Best use", "Carry players, team play, movement utility"],
+  ["Buy priority", "After income, pets, and basic defense"],
+];
+
+const useSteps = [
+  ["Equip it", "Open your gear inventory and equip Wheelbarrow before moving near another player."],
+  ["Move into position", "Use it around teammates or players you want to carry during routes or night chaos."],
+  ["Carry and reposition", "Move the player where your group needs them: near a shop, garden path, or defensive setup."],
+  ["Drop and swap tools", "After the carry is done, switch back to farming, defense, or movement gear."],
+];
+
 const faq = [
-  ["What does Wheelbarrow do in Grow a Garden 2?", "Wheelbarrow lets you carry players and move faster during group routes, shop runs, or night coordination."],
-  ["Is Wheelbarrow worth 500K Sheckles?", "Wheelbarrow is worth it after Bunny, Deer, and basic defense are covered. It is usually not the first 500K upgrade."],
-  ["Should I buy Wheelbarrow before Bee?", "Buy Bee or Gnome first if your garden holds expensive crops overnight."],
-  ["Who should buy Wheelbarrow early?", "Players who often play with friends and can recover 500K quickly can buy it earlier."],
-] as const;
+  ["Where do you get Wheelbarrow in Grow a Garden 2?", "Buy it from George at the Gear Shop when it appears in stock. It costs 500,000 Sheckles or 129 Robux."],
+  ["Does Wheelbarrow help farming?", "Only indirectly. It helps movement and group play, but crops, sprinklers, Bunny, Deer, and Bee usually improve your farm faster."],
+  ["Is Wheelbarrow better than Speed Mushroom?", "No for pure movement. Speed Mushroom is cheaper for quick travel, while Wheelbarrow is mainly for carrying players and team utility."],
+  ["Why does Wheelbarrow not work?", "Check that it is equipped, stand close enough to the player, and try again in an open area. If the server is lagging, re-equip the gear or rejoin."],
+];
 
 export default function WheelbarrowPage() {
   return (
     <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
-      <Script id="wheelbarrow-faq-jsonld" type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: faq.map(([question, answer]) => ({
-            "@type": "Question",
-            name: question,
-            acceptedAnswer: { "@type": "Answer", text: answer },
-          })),
-        })}
-      </Script>
-      <Script id="wheelbarrow-breadcrumb-jsonld" type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://growagarden2pet.wiki" },
-            { "@type": "ListItem", position: 2, name: "Wheelbarrow", item: "https://growagarden2pet.wiki/wheelbarrow" },
-          ],
-        })}
-      </Script>
+      <GuideJsonLd
+        id="wheelbarrow"
+        title="Grow a Garden 2 Wheelbarrow Guide"
+        description="Wheelbarrow guide for what it does, how to get it, how to use it, and whether it is worth buying in Grow a Garden 2."
+        path="/wheelbarrow"
+        breadcrumbs={breadcrumbs}
+      />
+      <Breadcrumbs items={breadcrumbs} />
       <h1 className="text-3xl font-extrabold text-[#2E3B2E]">Grow a Garden 2 Wheelbarrow Guide</h1>
       <p className="mt-2 text-sm text-[#777]">Legendary Gear. Costs 500,000 Sheckles or 129 Robux when it appears in the Gear Shop.</p>
 
       <section className="mt-5 rounded-2xl border-2 border-[#FFC107]/40 bg-[#FFF8E1] p-5">
         <h2 className="text-xl font-extrabold text-[#2E3B2E]">Quick Answer</h2>
-        <p className="mt-2 text-sm leading-6 text-[#4b4b4b]">
-          Buy Wheelbarrow after your income, pets, and night defense are stable. It is useful for group play and movement tricks, but Bunny, Deer, Bee, and better crops usually help your account more first.
-        </p>
+        <div className="mt-3 grid gap-3 sm:grid-cols-3">
+          {[
+            ["What it does", "Wheelbarrow lets you carry players and adds useful movement utility for team play."],
+            ["How to get it", "Check George at the Gear Shop and buy it when the Legendary gear appears in stock."],
+            ["Should you buy it", "Buy it after your income loop, Bunny or Deer, and basic night defense are already stable."],
+          ].map(([title, body]) => (
+            <div key={title} className="rounded-xl bg-white/80 p-3">
+              <p className="text-xs font-black uppercase tracking-[0.12em] text-[#F57F17]">{title}</p>
+              <p className="mt-1 text-sm font-semibold leading-6 text-[#4b4b4b]">{body}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
-      <div className="mt-6">
-        <WheelbarrowWorth />
+      <div className="mt-5 overflow-x-auto rounded-xl border border-[#e5e7eb] bg-white">
+        <table className="w-full text-sm">
+          <tbody>
+            {quickFacts.map(([label, value]) => (
+              <tr key={label} className="border-b border-[#e5e7eb] last:border-0">
+                <td className="px-3 py-2 text-xs font-black uppercase tracking-[0.12em] text-[#777]">{label}</td>
+                <td className="px-3 py-2 font-bold text-[#4b4b4b]">{value}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -74,7 +99,10 @@ export default function WheelbarrowPage() {
         </div>
       </div>
 
-      <h2 className="mt-8 mb-3 text-xl font-extrabold text-[#2E3B2E]">What It Does</h2>
+      <h2 className="mt-8 mb-3 text-xl font-extrabold text-[#2E3B2E]">What Does Wheelbarrow Do in GAG2?</h2>
+      <p className="mb-3 text-sm leading-6 text-[#777]">
+        Wheelbarrow is a player-carrying utility gear. It is best when you play with friends, move through crowded routes, or need a tool that helps your group coordinate around shops, gardens, and night defense.
+      </p>
       <div className="overflow-x-auto rounded-xl border border-[#e5e7eb] bg-white">
         <table className="w-full text-sm">
           <thead><tr className="border-b border-[#e5e7eb] bg-[#F9FAFB]"><th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Use</th><th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Best For</th><th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Action</th></tr></thead>
@@ -94,7 +122,7 @@ export default function WheelbarrowPage() {
         </table>
       </div>
 
-      <h2 className="mt-8 mb-3 text-xl font-extrabold text-[#2E3B2E]">How to Get It</h2>
+      <h2 className="mt-8 mb-3 text-xl font-extrabold text-[#2E3B2E]">How to Get Wheelbarrow</h2>
       <ol className="space-y-2">
         {[
           "Go to George at the Gear Shop in the central hub.",
@@ -108,6 +136,17 @@ export default function WheelbarrowPage() {
           </li>
         ))}
       </ol>
+
+      <h2 className="mt-8 mb-3 text-xl font-extrabold text-[#2E3B2E]">How to Use Wheelbarrow</h2>
+      <div className="grid gap-3 sm:grid-cols-2">
+        {useSteps.map(([title, body], index) => (
+          <div key={title} className="rounded-xl border border-[#e5e7eb] bg-white p-4">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#4CAF50] text-xs font-black text-white">{index + 1}</span>
+            <h3 className="mt-3 text-sm font-extrabold text-[#4b4b4b]">{title}</h3>
+            <p className="mt-1 text-sm leading-6 text-[#777]">{body}</p>
+          </div>
+        ))}
+      </div>
 
       <h2 className="mt-8 mb-3 text-xl font-extrabold text-[#2E3B2E]">Buy These First</h2>
       <div className="overflow-x-auto rounded-xl border border-[#e5e7eb] bg-white">
@@ -124,6 +163,10 @@ export default function WheelbarrowPage() {
         </table>
       </div>
 
+      <h2 className="mt-8 mb-3 text-xl font-extrabold text-[#2E3B2E]">Is Wheelbarrow Worth It?</h2>
+      <div className="mb-6">
+        <WheelbarrowWorth />
+      </div>
       <div className="mt-8 grid gap-3 sm:grid-cols-2">
         <div className="rounded-xl border-2 border-[#E53935]/20 bg-[#FFEBEE] p-4">
           <h3 className="text-sm font-extrabold text-[#E53935]">Skip It For Now</h3>
@@ -143,27 +186,26 @@ export default function WheelbarrowPage() {
         </div>
       </div>
 
+      <h2 className="mt-8 mb-3 text-xl font-extrabold text-[#2E3B2E]">Wheelbarrow FAQ</h2>
+      <div className="grid gap-3">
+        {faq.map(([q, a]) => (
+          <section key={q} className="rounded-xl border border-[#e5e7eb] bg-white p-4">
+            <h3 className="text-sm font-extrabold text-[#2E3B2E]">{q}</h3>
+            <p className="mt-1 text-sm leading-6 text-[#777]">{a}</p>
+          </section>
+        ))}
+      </div>
+
       <div className="mt-8 rounded-xl border border-[#3c3c3c]/20 bg-[#F9FAFB] p-5">
         <h3 className="mb-2 text-sm font-extrabold text-[#4b4b4b]">Next Guides</h3>
         <div className="flex flex-wrap gap-3 text-sm">
           <Link href="/gears" className="font-semibold text-[#4CAF50] hover:underline">All Gears</Link>
+          <Link href="/codes" className="font-semibold text-[#4CAF50] hover:underline">Active Codes</Link>
           <Link href="/pets" className="font-semibold text-[#4CAF50] hover:underline">Pet Buy Order</Link>
           <Link href="/night-stealing" className="font-semibold text-[#4CAF50] hover:underline">Night Defense</Link>
           <Link href="/beginner-guide" className="font-semibold text-[#4CAF50] hover:underline">Beginner Route</Link>
         </div>
       </div>
-
-      <section className="mt-8">
-        <h2 className="text-xl font-extrabold text-[#2E3B2E]">FAQ</h2>
-        <div className="mt-3 grid gap-3 sm:grid-cols-2">
-          {faq.map(([question, answer]) => (
-            <div key={question} className="rounded-xl border border-[#e5e7eb] bg-white p-4">
-              <h3 className="text-sm font-extrabold text-[#4b4b4b]">{question}</h3>
-              <p className="mt-1 text-sm leading-6 text-[#777]">{answer}</p>
-            </div>
-          ))}
-        </div>
-      </section>
     </main>
   );
 }

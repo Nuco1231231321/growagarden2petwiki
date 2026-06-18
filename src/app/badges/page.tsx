@@ -2,6 +2,7 @@ import Image from "next/image";
 import { gag2Badges, gag2Images } from "@/lib/data";
 import type { Metadata } from "next";
 import { RelatedGuides } from "@/components/related-guides";
+import { Breadcrumbs, GuideJsonLd } from "@/components/seo-helpers";
 
 export const metadata: Metadata = {
   title: "Grow a Garden 2 Badges & Achievements: All 23 & How to Unlock",
@@ -37,9 +38,29 @@ const badgeImage: Record<string, string> = {
 
 const categories = [...new Set(gag2Badges.map((badge) => badge.category))];
 
+const breadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "Pets & Eggs", href: "/pets" },
+  { name: "Badges", href: "/badges" },
+];
+
+const badgeRoutes = [
+  ["Easiest badges first", "Carrot!, First Pet!, Egg Hatcher!", "Start with tutorial progress, first pet, and first egg hatch."],
+  ["Hardest badges", "1000ft Plant!, 100kg Fruit!", "Use late-game crops, growth pets, sprinklers, weather, and patience."],
+  ["Limited badges", "OG, We are so back!", "Complete limited event tasks before they leave."],
+];
+
 export default function BadgesPage() {
   return (
     <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
+      <GuideJsonLd
+        id="badges"
+        title="Grow a Garden 2 Badges & Achievements"
+        description="All Grow a Garden 2 badges and achievements with easiest badges, hardest badges, limited badges, unlock tasks, and badge categories."
+        path="/badges"
+        breadcrumbs={breadcrumbs}
+      />
+      <Breadcrumbs items={breadcrumbs} />
       <div className="mb-6 flex items-center gap-4">
         <Image
           src="/grow-a-garden-2/badges/23_OG_Badge.webp"
@@ -53,6 +74,19 @@ export default function BadgesPage() {
           <p className="text-sm text-[#777]">23 badges across plant height, fruit weight, pets, mutations, and limited events.</p>
         </div>
       </div>
+
+      <section className="mb-8 rounded-2xl border-2 border-[#C8E6C9] bg-[#F6FBF4] p-5">
+        <h2 className="text-xl font-extrabold text-[#2E3B2E]">Badge Route</h2>
+        <div className="mt-4 grid gap-3 sm:grid-cols-3">
+          {badgeRoutes.map(([title, badges, tip]) => (
+            <div key={title} className="rounded-xl bg-white p-4">
+              <h3 className="text-sm font-extrabold text-[#2E3B2E]">{title}</h3>
+              <p className="mt-1 text-sm font-bold text-[#4b4b4b]">{badges}</p>
+              <p className="mt-1 text-xs leading-5 text-[#777]">{tip}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <div className="mb-8 grid gap-2 sm:grid-cols-3">
         {[

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { Breadcrumbs, GuideJsonLd } from "@/components/seo-helpers";
 
 export const metadata: Metadata = {
   title: "Grow a Garden 2 Props: 14 Crates, Bear Traps, Fences & Conveyors",
@@ -23,11 +25,52 @@ const crates = [
   ["Teleporter Pad","Mythic","20-50M / 499R","Pad(80%), Big(15%), Huge(5%)"],
 ];
 
+const breadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "Items & Gear", href: "/gears" },
+  { name: "Props & Crates", href: "/props" },
+];
+
+const bestCrates = [
+  ["1", "Bear Trap Crate", "Best first defensive crate because traps directly punish thieves."],
+  ["2", "Fence Crate", "Use fences when your garden needs a real perimeter."],
+  ["3", "Owner Door Crate", "Add after fences so the garden stays usable for you."],
+  ["4", "Teleporter Pad Crate", "Expensive movement upgrade for large farms, not an early priority."],
+];
+
+const defensiveProps = [
+  ["Bear Trap", "Stops or punishes thieves", "Place on common entry paths and near expensive crops."],
+  ["Fence", "Blocks routes into your garden", "Use around the crop area before night."],
+  ["Owner Door", "Restricts access through your fence", "Pair with fences once the perimeter is built."],
+  ["Teleporter Pad", "Moves you around quickly", "Use for large gardens and defense response routes."],
+];
+
 export default function PropsPage() {
   return (
     <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
+      <GuideJsonLd
+        id="props"
+        title="Grow a Garden 2 Props & Crates Guide"
+        description="All props and crates in Grow a Garden 2 with prices, drop rates, defensive crate priority, Bear Traps, fences, Owner Doors, and Teleporter Pads."
+        path="/props"
+        breadcrumbs={breadcrumbs}
+      />
+      <Breadcrumbs items={breadcrumbs} />
       <h1 className="text-3xl font-extrabold text-[#2E3B2E]">Grow a Garden 2 Props & Crates Guide</h1>
       <p className="mt-2 text-sm text-[#777]">14 crate types from <strong>Charlotte</strong> at the Props Shop (rotates every 5 min). Sheckles or Robux.</p>
+
+      <section className="mt-6 rounded-2xl border-2 border-[#C8E6C9] bg-[#F6FBF4] p-5">
+        <h2 className="text-xl font-extrabold text-[#2E3B2E]">Best Crates to Buy First</h2>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          {bestCrates.map(([rank, crate, body]) => (
+            <div key={crate} className="rounded-xl bg-white p-4">
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#4CAF50] text-xs font-black text-white">{rank}</span>
+              <h3 className="mt-3 text-sm font-extrabold text-[#4b4b4b]">{crate}</h3>
+              <p className="mt-1 text-sm leading-6 text-[#777]">{body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <h2 className="text-xl font-extrabold text-[#2E3B2E] mt-6 mb-3">All Crates</h2>
       <div className="overflow-x-auto rounded-xl border border-[#3c3c3c]/20 bg-white">
@@ -69,6 +112,22 @@ export default function PropsPage() {
         ))}
       </div>
 
+      <h2 className="text-xl font-extrabold text-[#2E3B2E] mt-8 mb-3">Defensive Props Table</h2>
+      <div className="overflow-x-auto rounded-xl border border-[#e5e7eb] bg-white">
+        <table className="w-full text-sm">
+          <thead><tr className="border-b border-[#e5e7eb] bg-[#F9FAFB]"><th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Prop</th><th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Use</th><th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Best placement</th></tr></thead>
+          <tbody>
+            {defensiveProps.map((row) => (
+              <tr key={row[0]} className="border-b border-[#e5e7eb] last:border-0">
+                <td className="px-3 py-2 font-bold text-[#4b4b4b]">{row[0]}</td>
+                <td className="px-3 py-2 text-xs text-[#777]">{row[1]}</td>
+                <td className="px-3 py-2 text-xs text-[#777]">{row[2]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
       <h2 className="text-xl font-extrabold text-[#2E3B2E] mt-8 mb-3">Pro Tips</h2>
       <ul className="space-y-2 text-sm text-[#777]">
         <li>• <strong>Stack Bear Traps</strong> — place multiple traps at common entry points. Thieves can avoid one trap but rarely dodge three.</li>
@@ -77,6 +136,15 @@ export default function PropsPage() {
         <li>• <strong>Conveyor belts</strong> automate crop movement between growing areas and storage. Super Conveyor is a 2% drop.</li>
         <li>• <strong>Save Sheckles first</strong> — focus on crops and pets before investing heavily in decorative crates like Seesaw, Arch, or Bridge.</li>
       </ul>
+
+      <div className="mt-8 rounded-xl border border-[#e5e7eb] bg-[#F9FAFB] p-5">
+        <h2 className="text-sm font-extrabold text-[#4b4b4b]">Next Defense Guides</h2>
+        <div className="mt-2 flex flex-wrap gap-3 text-sm">
+          <Link href="/night-stealing" className="font-semibold text-[#4CAF50] hover:underline">Night Stealing Defense</Link>
+          <Link href="/gears" className="font-semibold text-[#4CAF50] hover:underline">Best Gears</Link>
+          <Link href="/pets" className="font-semibold text-[#4CAF50] hover:underline">Defense Pets</Link>
+        </div>
+      </div>
     </main>
   );
 }

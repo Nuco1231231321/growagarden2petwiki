@@ -1,6 +1,9 @@
+/* eslint-disable react/no-unescaped-entities */
 import Image from "next/image";
+import Link from "next/link";
 import { gag2Images } from "@/lib/data";
 import type { Metadata } from "next";
+import { Breadcrumbs, GuideJsonLd } from "@/components/seo-helpers";
 
 export const metadata: Metadata = {
   title: "Grow a Garden 2 Guilds: How to Create, Join & Earn Weekly Rewards",
@@ -8,9 +11,30 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://growagarden2pet.wiki/guild" },
 };
 
+const breadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "Pets & Eggs", href: "/eggs" },
+  { name: "Guilds", href: "/guild" },
+];
+
+const rewardSteps = [
+  ["Join an active guild", "Accept an invite through your garden mailbox so you can contribute to weekly rewards."],
+  ["Grow heavier crops", "Use better seeds, Deer, sprinklers, and mutations to raise your heaviest crop contribution."],
+  ["Help weekly ranking", "Guild rewards improve when active members contribute strong crops."],
+  ["Use rewards for eggs", "Claim reward eggs, place them in your garden, then hatch pets for your next upgrade route."],
+];
+
 export default function GuildPage() {
   return (
     <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
+      <GuideJsonLd
+        id="guild"
+        title="Grow a Garden 2 Guilds Guide"
+        description="Guild guide for how to create, join, invite, earn weekly rewards, get eggs, and use guild roles in Grow a Garden 2."
+        path="/guild"
+        breadcrumbs={breadcrumbs}
+      />
+      <Breadcrumbs items={breadcrumbs} />
       <div className="flex items-center gap-4 mb-6">
         <Image src={gag2Images.icon} alt="GAG2" width={56} height={56} className="rounded-xl" />
         <div><h1 className="text-3xl font-extrabold text-[#2E3B2E]">Grow a Garden 2 Guilds Guide</h1><p className="text-sm text-[#777]">Teams of up to 50 players — compete for weekly rewards</p></div>
@@ -49,15 +73,36 @@ export default function GuildPage() {
 
       <h2 className="text-xl font-extrabold text-[#2E3B2E] mt-8 mb-3">Weekly Rewards</h2>
       <p className="text-sm text-[#777] leading-relaxed">Guilds compete based on the <strong>combined weight of every member&apos;s heaviest single crop</strong>. Each member contributes 1 point per gram of their heaviest crop. Higher-ranked guilds earn exclusive rewards at the end of each week.</p>
-      <p className="mt-3 text-sm text-[#777]"><strong>Joining is free</strong> — you don&apos;t need to create a guild to participate. Find an active guild and contribute your heaviest crops to help the team rank higher. Guilds with active farmers consistently out-earn solo players.</p>
+      <p className="mt-3 text-sm text-[#777]"><strong>Joining is free</strong> — you don't need to create a guild to participate. Find an active guild and contribute your heaviest crops to help the team rank higher. Guilds with active farmers consistently out-earn solo players.</p>
+
+      <h2 className="text-xl font-extrabold text-[#2E3B2E] mt-8 mb-3">How to Get Guild Rewards</h2>
+      <div className="grid gap-3 sm:grid-cols-2">
+        {rewardSteps.map(([title, body], index) => (
+          <div key={title} className="rounded-xl border border-[#e5e7eb] bg-white p-4">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#4CAF50] text-xs font-black text-white">{index + 1}</span>
+            <h3 className="mt-3 text-sm font-extrabold text-[#4b4b4b]">{title}</h3>
+            <p className="mt-1 text-sm leading-6 text-[#777]">{body}</p>
+          </div>
+        ))}
+      </div>
 
       <h2 className="text-xl font-extrabold text-[#2E3B2E] mt-8 mb-3">Pro Tips</h2>
       <ul className="space-y-2 text-sm text-[#777]">
-        <li>• <strong>Accept invites at your garden mailbox</strong> — NOT at Gilbert&apos;s stand. This is the #1 confusion point.</li>
+        <li>• <strong>Accept invites at your garden mailbox</strong> — NOT at Gilbert's stand. This is the #1 confusion point.</li>
         <li>• <strong>Elders can invite but cannot disband</strong> — assign Elder to trusted members for recruiting.</li>
         <li>• <strong>Only Owners can disband</strong> — if you create a guild, you cannot leave without disbanding it first.</li>
         <li>• <strong>Grow the heaviest crop possible</strong> — use Super Sprinklers, Deer pets, and mutations to maximize crop weight for guild ranking.</li>
       </ul>
+
+      <div className="mt-8 rounded-xl border border-[#e5e7eb] bg-[#F9FAFB] p-5">
+        <h2 className="text-sm font-extrabold text-[#4b4b4b]">Guild Reward Route</h2>
+        <div className="mt-2 flex flex-wrap gap-3 text-sm">
+          <Link href="/eggs" className="font-semibold text-[#4CAF50] hover:underline">Egg Hatching</Link>
+          <Link href="/pets" className="font-semibold text-[#4CAF50] hover:underline">Pets Tier List</Link>
+          <Link href="/seeds" className="font-semibold text-[#4CAF50] hover:underline">Best Seeds</Link>
+          <Link href="/badges" className="font-semibold text-[#4CAF50] hover:underline">Badges</Link>
+        </div>
+      </div>
     </main>
   );
 }
