@@ -10,12 +10,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://growagarden2pet.wiki" },
 };
 
-const heroPets = [
-  { name: "Bunny", src: gag2Images.pet("bunny"), label: "first speed pet" },
-  { name: "Deer", src: gag2Images.pet("deer"), label: "growth pet" },
-  { name: "Bee", src: gag2Images.pet("bee"), label: "first defense pet" },
-] as const;
-
 const quickPicks = [
   { label: "Plant", title: "Build income first", detail: "Use the seed route before spending Sheckles on novelty gear.", href: "/seeds", image: "/grow-a-garden-2/cards/plant-route-card.webp", accent: "bg-[#7fd9b0]" },
   { label: "Pet", title: "Buy useful pets", detail: "Start with Bunny and Deer, then add defense before night stealing matters.", href: "/pets", image: "/grow-a-garden-2/cards/pet-route-card.webp", accent: "bg-[#f2d2ab]" },
@@ -78,24 +72,24 @@ const facts = [
 export default function Home() {
   return (
     <main className="overflow-hidden bg-gradient-to-b from-[#f6fbf4] via-white to-white">
-      <section className="relative mx-auto grid min-h-[calc(100vh-64px)] w-[calc(100%-32px)] max-w-[1200px] items-center gap-12 py-8 sm:w-[calc(100%-48px)] lg:grid-cols-[1fr_1.08fr] lg:py-14">
-        <div className="absolute -top-20 right-10 hidden h-64 w-64 opacity-[0.06] lg:block" style={{ backgroundImage: "radial-gradient(circle, #4CAF50 2px, transparent 2px)", backgroundSize: "24px 24px" }} />
+      <section className="relative mx-auto w-[calc(100%-32px)] max-w-[1120px] py-14 sm:w-[calc(100%-48px)] lg:py-20">
+        <div className="absolute left-1/2 top-0 hidden h-72 w-72 -translate-x-1/2 opacity-[0.05] lg:block" style={{ backgroundImage: "radial-gradient(circle, #4CAF50 2px, transparent 2px)", backgroundSize: "24px 24px" }} />
 
-        <div>
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#b8dcc2] bg-[#eaf7ed] px-5 py-2 text-sm font-black uppercase tracking-[0.1em] text-[#2d6a3f]">
+        <div className="relative mx-auto max-w-4xl text-center">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#b8dcc2] bg-[#eaf7ed] px-5 py-2 text-xs font-black uppercase tracking-[0.14em] text-[#2d6a3f] sm:text-sm">
             <span className="h-2.5 w-2.5 rounded-full bg-garden" />
             Updated Jun 16, 2026
           </div>
 
-          <h1 className="max-w-[760px] text-[clamp(2rem,7vw,4.5rem)] font-black leading-[0.96] text-[#071b10]">
+          <h1 className="mx-auto max-w-4xl text-[clamp(2.45rem,5.4vw,4.6rem)] font-black leading-[0.98] text-[#071b10]">
             Grow a Garden 2 Wiki: <span className="text-garden">Pets, Codes, Seeds &amp; Weather Guides</span>
           </h1>
 
-          <p className="mt-5 max-w-xl text-base font-semibold leading-7 text-[#4a6654] sm:text-lg sm:leading-8">
+          <p className="mx-auto mt-5 max-w-2xl text-base font-semibold leading-7 text-[#4a6654] sm:text-lg sm:leading-8">
             GAG2 Wiki hub for codes, pets tier list, eggs, wheelbarrow, best seeds, weather events, night defense, and every route you need before spending Sheckles.
           </p>
 
-          <div className="mt-5 flex flex-wrap gap-2">
+          <div className="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-2">
             {popularSearches.map(([label, href]) => (
               <Link key={href} href={href} className="rounded-full border border-[#d7e5d3] bg-white px-3 py-1.5 text-xs font-black text-[#2d6a3f] shadow-sm transition hover:-translate-y-0.5 hover:border-garden">
                 {label}
@@ -103,9 +97,7 @@ export default function Home() {
             ))}
           </div>
 
-          <SiteLookup />
-
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Link href="/calculator" className="inline-flex min-h-12 items-center justify-center rounded-xl border border-b-[4px] border-garden bg-garden px-7 text-center font-black tracking-wide text-white shadow-[0_4px_0_#3d8b40] transition hover:-translate-y-0.5 hover:shadow-[0_6px_0_#3d8b40]">
               Crop calculator
             </Link>
@@ -117,7 +109,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="mt-9 grid grid-cols-2 overflow-hidden rounded-xl border border-[#e0e8dc] bg-white/80 md:max-w-2xl md:grid-cols-4">
+          <div className="mx-auto mt-9 grid max-w-3xl grid-cols-2 overflow-hidden rounded-xl border border-[#e0e8dc] bg-white/80 text-left md:grid-cols-4">
             {facts.map(([label, value]) => (
               <div key={label} className="border-b border-r border-[#e8efe4] p-4 last:border-r-0 md:border-b-0">
                 <p className="text-[11px] font-black uppercase tracking-[0.12em] text-ash">{label}</p>
@@ -127,35 +119,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="relative">
-          <div className="relative rounded-[26px] border border-[#e0e8dc] bg-white p-3 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
-            <div className="overflow-hidden rounded-[22px] border border-[#e8efe4]">
-              <Image src={gag2Images.seed("mushroom-farm")} alt="Grow a Garden 2 farm scene" width={900} height={506} className="h-[260px] w-full bg-[#edf8ee] object-contain sm:h-[360px]" priority />
-            </div>
-            <div className="mt-4 grid gap-4 sm:grid-cols-[1fr_1.35fr]">
-              <div className="rounded-[22px] border border-[#c8e0cc] bg-garden p-4 text-white shadow-[0_4px_0_#3d8b40]">
-                <Image src={gag2Images.icon} alt="Grow a Garden 2 icon" width={96} height={96} className="h-16 w-16 rounded-2xl border-2 border-white bg-white" />
-                <p className="mt-3 text-xs font-black uppercase tracking-[0.12em] text-seedling">Start here</p>
-                <p className="text-xl font-black leading-tight">Action-first guides</p>
-              </div>
-              <div className="grid grid-cols-3 gap-2">
-                {heroPets.map((pet) => (
-                  <div key={pet.name} className="rounded-[22px] border border-[#e0e8dc] bg-white p-3 text-center shadow-[0_4px_0_#e8efe4]">
-                    <Image src={pet.src} alt={pet.name} width={96} height={96} className="mx-auto h-16 w-16 object-contain sm:h-20 sm:w-20" />
-                    <p className="mt-1 text-xs font-black text-[#20332a] sm:text-sm">{pet.name}</p>
-                    <p className="hidden text-[11px] font-bold text-ash sm:block">{pet.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="mt-4 grid grid-cols-[76px_1fr] items-center gap-4 rounded-[22px] border border-[#e0e8dc] bg-white p-3 shadow-[0_4px_0_#e8efe4] sm:grid-cols-[92px_1fr]">
-              <Image src={gag2Images.gear("wheelbarrow-scene")} alt="Wheelbarrow gameplay" width={176} height={100} className="h-16 w-20 rounded-2xl bg-[#edf8ee] object-contain sm:h-20 sm:w-24" />
-              <div>
-                <p className="text-sm font-black text-[#1f3027]">Do this next</p>
-                <p className="text-sm font-medium leading-6 text-[#3f5b4b]">Each guide starts with what to buy, skip, protect, or harvest.</p>
-              </div>
-            </div>
-          </div>
+        <div className="relative mx-auto mt-10 max-w-4xl">
+          <SiteLookup />
         </div>
       </section>
 
