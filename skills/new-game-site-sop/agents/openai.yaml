@@ -1,0 +1,4 @@
+interface:
+  display_name: "新游戏站 SOP"
+  short_description: "用 AI 调研和人工证据启动新的游戏攻略站。"
+  default_prompt: "使用 $new-game-site-sop 帮我规划一个新的游戏攻略站，要求 AI 负责调研和起草，我来补截图、实测和证据。"

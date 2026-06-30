@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { gag2Gears } from "@/lib/data";
 import type { Metadata } from "next";
 import { Breadcrumbs, GuideJsonLd } from "@/components/seo-helpers";
+import { gag2Gears } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Grow a Garden 2 Gears Guide: Prices, Effects & Best Gears",
@@ -9,13 +9,14 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://growagarden2pet.wiki/gears" },
 };
 
-const cats = [...new Set(gag2Gears.map((g) => g.category))];
+const cats = [...new Set(gag2Gears.map((gear) => gear.category))];
+
 const robuxGears = [
-  { n: "Rainbow Carpet", e: "🪄", c: "599 Robux", f: "Fly anywhere on the map" },
-  { n: "Vine Wrapper", e: "🌿", c: "499 Robux", f: "Wraps players in vines" },
-  { n: "Freeze Ray", e: "❄️", c: "749 Robux", f: "Freezes a player into ice" },
-  { n: "Power Hose", e: "🔫", c: "299 Robux", f: "Sprays and pushes players" },
-];
+  { n: "Rainbow Carpet", c: "599 Robux", f: "Fast premium travel. Strong comfort pick, not a core farming upgrade." },
+  { n: "Vine Wrapper", c: "499 Robux", f: "PvP control tool for players who actually use player-interference routes." },
+  { n: "Freeze Ray", c: "749 Robux", f: "High-control PvP tool. Not part of the normal money route." },
+  { n: "Power Hose", c: "299 Robux", f: "Niche player-control gear, not a first-buy economy tool." },
+] as const;
 
 const breadcrumbs = [
   { name: "Home", href: "/" },
@@ -24,39 +25,37 @@ const breadcrumbs = [
 ];
 
 const firstBuys = [
-  ["Watering/Sprinkler", "Common Sprinkler -> Rare Sprinkler", "Buy growth tools before novelty gear because they improve every crop route."],
-  ["Defense", "Gnome / Flashbang", "Use defensive gear before holding expensive crops at night."],
-  ["Movement", "Speed Mushroom / Teleporter", "Use movement tools when you are crossing the map or escaping night pressure."],
-  ["Utility", "Wheelbarrow / Basic Pot", "Buy these after income and defense are stable."],
+  ["Buy first", "Common Sprinkler, Rare Sprinkler, Common Watering Can", "Growth tools improve every crop route and pay back faster than side utility."],
+  ["Buy after that", "Gnome, Flashbang, Bee support", "Defense starts mattering once your garden finally holds crops worth stealing."],
+  ["Buy later", "Wheelbarrow, Basic Pot, Teleporter", "Useful tools, but they should not delay crop income or early defense."],
+  ["Buy for comfort, not urgency", "Rainbow Carpet and premium movement tools", "Movement comfort is nice, but it is not the same as fixing your real bottleneck."],
 ];
 
-const gearTiers = [
-  ["S", "Super Sprinkler, Gnome, Wheelbarrow", "High-value tools for growth, defense, or team utility."],
-  ["A", "Rare Sprinkler, Legendary Sprinkler, Teleporter, Speed Mushroom", "Strong tools that solve common farming and movement problems."],
-  ["B", "Common Sprinkler, Super Watering Can, Flashbang, Basic Pot", "Useful in the right situation, but not always first priority."],
-  ["C", "Cosmetic or narrow-use tools", "Buy after your core farm upgrades are already handled."],
+const decisionRows = [
+  ["Your farm grows too slowly", "Sprinklers first", "Growth is the cleanest upgrade because it improves the whole field instead of one narrow gimmick."],
+  ["You lose crops at night", "Gnome or defense tools next", "Defense becomes worth buying as soon as crop loss hurts more than the gear price."],
+  ["You just want faster travel", "Speed Mushroom or Teleporter", "Use cheaper movement tools before expensive utility like Wheelbarrow."],
+  ["You play with friends often", "Wheelbarrow later", "Great for team utility, but weak as a first economy purchase."],
 ];
 
-const goalPicks = [
-  ["Faster growth", "Sprinklers and Watering Cans", "Stack crop growth tools before expensive utility purchases."],
-  ["Night defense", "Gnome, Flashbang, Bee support", "Protect high-value crops before leaving them out overnight."],
-  ["Movement", "Speed Mushroom and Teleporter", "Use these for shop routes, escape paths, and night movement."],
-  ["Player carrying", "Wheelbarrow", "Best for group play and repositioning players, not for first-hour farming."],
+const gearWarnings = [
+  ["Do not buy utility before income", "If a gear does not improve growth, defense, or a clear route bottleneck, it is probably too early."],
+  ["Do not let novelty delay Bee or Gnome timing", "Night losses erase gains fast, so defense gear beats side utility once your crops gain value."],
+  ["Do not treat every expensive gear as top priority", "A high price does not automatically mean it should come before your core route pieces."],
 ];
 
-const itemAnswers = [
-  ["Megaphone", "Megaphone plays Roblox audio from numeric Sound IDs. If the sound is silent, the ID may have been removed, typed incorrectly, or blocked by Roblox audio moderation."],
-  ["Basic Pot", "Basic Pot lets you plant a crop in a movable pot. Buy it only after your income loop is stable; it should not delay crops, pets, or defense."],
-  ["Gnome", "Gnome is one of the first defensive gears to consider because it helps push away intruders during night stealing."],
-  ["Super Watering Can", "Super Watering Can is a burst-growth tool. Use it when you want a short growth push on important crops."],
-  ["Wheelbarrow", "Wheelbarrow lets you carry players and adds team utility. Read the full Wheelbarrow guide before spending 500,000 Sheckles."],
+const keyAnswers = [
+  ["Megaphone", "Useful only if your current problem is sound playback. It is not part of the farm upgrade route."],
+  ["Basic Pot", "Buy after the money loop is stable. It should never beat seeds, sprinklers, or first defense."],
+  ["Gnome", "One of the cleanest defensive buys because it solves a real night problem before full late-game setups."],
+  ["Wheelbarrow", "Strong team utility, but only after the account stops being starved for growth and defense."],
 ];
 
 const faq = [
-  ["What is the best gear in GAG2?", "Sprinklers are usually the best farming gear, while Gnome and Wheelbarrow are stronger for defense or team utility."],
-  ["Is Basic Pot worth it?", "Basic Pot is worth it later, but it is not a first purchase. Buy income, pets, and basic defense first."],
-  ["What does Gnome do?", "Gnome helps defend your garden by interfering with intruders at night."],
-  ["Which sprinkler should you buy first?", "Start with affordable sprinklers, then upgrade as your farm income improves."],
+  ["What is the best gear in Grow a Garden 2?", "Sprinklers are the best general farming gear because they strengthen the whole crop route instead of a side activity."],
+  ["What should beginners buy first?", "Beginners should buy growth tools first, then defense, and only then utility gear like Wheelbarrow or Basic Pot."],
+  ["Is Basic Pot worth it?", "Yes later. No if it delays better crops, sprinklers, Bunny, Deer, or your first defense setup."],
+  ["When is Wheelbarrow worth buying?", "When your account already earns enough that 500K no longer slows your crop route or defense route."],
 ];
 
 export default function GearsPage() {
@@ -70,14 +69,24 @@ export default function GearsPage() {
         breadcrumbs={breadcrumbs}
       />
       <Breadcrumbs items={breadcrumbs} />
+
       <h1 className="text-3xl font-extrabold text-[#2E3B2E]">Grow a Garden 2 Gears Guide</h1>
-      <p className="mt-2 text-sm text-[#777]">Gears from <strong>George</strong> at the Gear Shop (rotates every 5 min). Some also purchasable with Robux. {gag2Gears.length} Sheckles gears + 4 Robux-only.</p>
+      <p className="mt-2 text-sm text-[#777]">
+        Use this page to decide which gear solves your next problem: crop growth, night defense, movement, or team utility.
+      </p>
 
       <section className="mt-6 rounded-2xl border-2 border-[#C8E6C9] bg-[#F6FBF4] p-5">
-        <h2 className="text-xl font-extrabold text-[#2E3B2E]">Best Gears to Buy First</h2>
-        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <h2 className="text-xl font-extrabold text-[#2E3B2E]">Quick answer</h2>
+        <p className="mt-2 text-sm leading-6 text-[#4b4b4b]">
+          Buy growth gear first, defense gear second, and utility gear third. If a gear does not improve crops, stop losses, or fix a real route bottleneck, it usually should not be the next purchase.
+        </p>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="mb-3 text-xl font-extrabold text-[#2E3B2E]">Best gears to buy first</h2>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {firstBuys.map(([type, gear, body]) => (
-            <div key={type} className="rounded-xl bg-white p-4">
+            <div key={type} className="rounded-xl border border-[#e5e7eb] bg-white p-4">
               <p className="text-xs font-black uppercase tracking-[0.12em] text-[#4CAF50]">{type}</p>
               <h3 className="mt-1 text-sm font-extrabold text-[#4b4b4b]">{gear}</h3>
               <p className="mt-1 text-sm leading-6 text-[#777]">{body}</p>
@@ -86,64 +95,95 @@ export default function GearsPage() {
         </div>
       </section>
 
-      <div className="mt-8 mb-3 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-        <h2 className="text-xl font-extrabold text-[#2E3B2E]">Grow a Garden 2 Gear Tier List</h2>
-        <Link href="/tier-list" className="text-sm font-black text-[#4CAF50] underline decoration-2 underline-offset-4">Full Grow a Garden 2 tier list</Link>
-      </div>
-      <div className="space-y-2">
-        {gearTiers.map(([tier, gears, reason]) => (
-          <div key={tier} className="flex gap-3 rounded-xl border border-[#e5e7eb] bg-white p-4">
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#FFF8E1] text-sm font-black text-[#F57F17]">{tier}</span>
-            <div>
-              <p className="text-sm font-extrabold text-[#4b4b4b]">{gears}</p>
-              <p className="mt-1 text-xs leading-5 text-[#777]">{reason}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      <section className="mt-8">
+        <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <h2 className="text-xl font-extrabold text-[#2E3B2E]">What to buy based on your bottleneck</h2>
+          <Link href="/tier-list" className="text-sm font-black text-[#4CAF50] underline decoration-2 underline-offset-4">
+            Full Grow a Garden 2 tier list
+          </Link>
+        </div>
+        <div className="overflow-x-auto rounded-xl border border-[#e5e7eb] bg-white">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-[#e5e7eb] bg-[#F9FAFB]">
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Problem</th>
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Best answer</th>
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              {decisionRows.map((row) => (
+                <tr key={row[0]} className="border-b border-[#e5e7eb] last:border-0">
+                  <td className="px-3 py-2 font-bold text-[#4b4b4b]">{row[0]}</td>
+                  <td className="px-3 py-2 text-xs font-semibold text-[#4b4b4b]">{row[1]}</td>
+                  <td className="px-3 py-2 text-xs text-[#777]">{row[2]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-      <h2 className="mt-8 mb-3 text-xl font-extrabold text-[#2E3B2E]">Best Gears by Goal</h2>
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        {goalPicks.map(([goal, pick, body]) => (
-          <div key={goal} className="rounded-xl border border-[#e5e7eb] bg-white p-4">
-            <p className="text-xs font-black uppercase tracking-[0.12em] text-[#4CAF50]">{goal}</p>
-            <h3 className="mt-1 text-sm font-extrabold text-[#4b4b4b]">{pick}</h3>
+      <section className="mt-8 grid gap-3 sm:grid-cols-3">
+        {gearWarnings.map(([title, body]) => (
+          <div key={title} className="rounded-xl border border-[#FFF0C2] bg-[#FFF8E1] p-4">
+            <h3 className="text-sm font-extrabold text-[#2E3B2E]">{title}</h3>
             <p className="mt-1 text-sm leading-6 text-[#777]">{body}</p>
           </div>
         ))}
-      </div>
+      </section>
 
-      <h2 className="mt-8 mb-3 text-xl font-extrabold text-[#2E3B2E]">Key Gear Answers</h2>
-      <div className="grid gap-3 sm:grid-cols-2">
-        {itemAnswers.map(([gear, body]) => (
-          <section key={gear} className="rounded-xl border-2 border-[#C8E6C9] bg-white p-4">
-            <h3 className="text-sm font-extrabold text-[#2E3B2E]">{gear}</h3>
-            <p className="mt-1 text-sm leading-6 text-[#777]">{body}</p>
-            {gear === "Megaphone" && <Link href="/megaphone-sound-ids" className="mt-2 inline-block text-sm font-bold text-[#4CAF50] hover:underline">Open Megaphone Sound IDs</Link>}
-            {gear === "Wheelbarrow" && <Link href="/wheelbarrow" className="mt-2 inline-block text-sm font-bold text-[#4CAF50] hover:underline">Open Wheelbarrow guide</Link>}
-          </section>
-        ))}
-      </div>
+      <section className="mt-8">
+        <h2 className="mb-3 text-xl font-extrabold text-[#2E3B2E]">Key gear answers</h2>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {keyAnswers.map(([gear, body]) => (
+            <section key={gear} className="rounded-xl border-2 border-[#C8E6C9] bg-white p-4">
+              <h3 className="text-sm font-extrabold text-[#2E3B2E]">{gear}</h3>
+              <p className="mt-1 text-sm leading-6 text-[#777]">{body}</p>
+              {gear === "Megaphone" && (
+                <Link href="/megaphone-sound-ids" className="mt-2 inline-block text-sm font-bold text-[#4CAF50] hover:underline">
+                  Open Megaphone Sound IDs
+                </Link>
+              )}
+              {gear === "Wheelbarrow" && (
+                <Link href="/wheelbarrow" className="mt-2 inline-block text-sm font-bold text-[#4CAF50] hover:underline">
+                  Open Wheelbarrow guide
+                </Link>
+              )}
+            </section>
+          ))}
+        </div>
+      </section>
 
       {cats.map((cat) => {
-        const items = gag2Gears.filter((g) => g.category === cat);
+        const items = gag2Gears.filter((gear) => gear.category === cat);
         return (
           <section key={cat} className="mt-8">
-            <h2 className="text-xl font-extrabold text-[#2E3B2E] mb-3">{cat}</h2>
+            <h2 className="mb-3 text-xl font-extrabold text-[#2E3B2E]">{cat}</h2>
             <div className="overflow-x-auto rounded-xl border border-[#3c3c3c]/20 bg-white">
               <table className="w-full text-sm">
-                <thead><tr className="border-b border-[#3c3c3c]/20 bg-[#F9FAFB]"><th className="px-3 py-2 text-left font-bold text-[#777] text-xs">Gear</th><th className="px-3 py-2 text-left font-bold text-[#777] text-xs">Rarity</th><th className="px-3 py-2 text-left font-bold text-[#777] text-xs">Price</th><th className="px-3 py-2 text-left font-bold text-[#777] text-xs">Effect</th></tr></thead>
+                <thead>
+                  <tr className="border-b border-[#3c3c3c]/20 bg-[#F9FAFB]">
+                    <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Gear</th>
+                    <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Rarity</th>
+                    <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Price</th>
+                    <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Effect</th>
+                  </tr>
+                </thead>
                 <tbody>
-                  {items.map((g) => {
-                    return (
-                      <tr key={g.name} className="border-b border-[#3c3c3c]/10 last:border-0 hover:bg-[#C8E6C9]/5">
-                        <td className="px-3 py-2 font-semibold text-[#4b4b4b] text-xs">{g.emoji} {g.name}</td>
-                        <td className="px-3 py-2 text-xs text-[#777]">{g.rarity}</td>
-                        <td className="px-3 py-2 font-mono text-xs text-[#4b4b4b]">{g.costSheckles}{g.costRobux ? ` / ${g.costRobux}R` : ''}</td>
-                        <td className="px-3 py-2 text-xs text-[#777]">{g.effect}</td>
-                      </tr>
-                    );
-                  })}
+                  {items.map((gear) => (
+                    <tr key={gear.name} className="border-b border-[#3c3c3c]/10 last:border-0 hover:bg-[#C8E6C9]/5">
+                      <td className="px-3 py-2 text-xs font-semibold text-[#4b4b4b]">
+                        {gear.emoji} {gear.name}
+                      </td>
+                      <td className="px-3 py-2 text-xs text-[#777]">{gear.rarity}</td>
+                      <td className="px-3 py-2 font-mono text-xs text-[#4b4b4b]">
+                        {gear.costSheckles}
+                        {gear.costRobux ? ` / ${gear.costRobux}R` : ""}
+                      </td>
+                      <td className="px-3 py-2 text-xs text-[#777]">{gear.effect}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
@@ -151,41 +191,59 @@ export default function GearsPage() {
         );
       })}
 
-      <h2 className="text-xl font-extrabold text-[#2E3B2E] mt-8 mb-3">Robux-Only Gears</h2>
-      <div className="overflow-x-auto rounded-xl border border-[#3c3c3c]/20 bg-white">
-        <table className="w-full text-sm">
-          <thead><tr className="border-b border-[#3c3c3c]/20 bg-[#F9FAFB]"><th className="px-3 py-2 text-left font-bold text-[#777] text-xs">Gear</th><th className="px-3 py-2 text-left font-bold text-[#777] text-xs">Cost</th><th className="px-3 py-2 text-left font-bold text-[#777] text-xs">Effect</th></tr></thead>
-          <tbody>
-            {robuxGears.map((g) => (
-              <tr key={g.n} className="border-b border-[#3c3c3c]/10 last:border-0">
-                <td className="px-3 py-2 font-semibold text-[#4b4b4b]">{g.e} {g.n}</td>
-                <td className="px-3 py-2 font-mono text-xs text-[#4b4b4b]">{g.c}</td>
-                <td className="px-3 py-2 text-xs text-[#777]">{g.f}</td>
+      <section className="mt-8">
+        <h2 className="mb-3 text-xl font-extrabold text-[#2E3B2E]">Robux-only gears</h2>
+        <div className="overflow-x-auto rounded-xl border border-[#3c3c3c]/20 bg-white">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-[#3c3c3c]/20 bg-[#F9FAFB]">
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Gear</th>
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Cost</th>
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">What it is really for</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      <h2 className="mt-8 mb-3 text-xl font-extrabold text-[#2E3B2E]">Gear FAQ</h2>
-      <div className="grid gap-3 sm:grid-cols-2">
-        {faq.map(([q, a]) => (
-          <section key={q} className="rounded-xl border border-[#e5e7eb] bg-white p-4">
-            <h3 className="text-sm font-extrabold text-[#2E3B2E]">{q}</h3>
-            <p className="mt-1 text-sm leading-6 text-[#777]">{a}</p>
-          </section>
-        ))}
-      </div>
-
-      <div className="mt-8 rounded-xl border border-[#e5e7eb] bg-[#F9FAFB] p-5">
-        <h2 className="text-sm font-extrabold text-[#4b4b4b]">Next Gear Routes</h2>
-        <div className="mt-2 flex flex-wrap gap-3 text-sm">
-          <Link href="/wheelbarrow" className="font-semibold text-[#4CAF50] hover:underline">Wheelbarrow Guide</Link>
-          <Link href="/megaphone-sound-ids" className="font-semibold text-[#4CAF50] hover:underline">Megaphone Sound IDs</Link>
-          <Link href="/night-stealing" className="font-semibold text-[#4CAF50] hover:underline">Night Defense</Link>
-          <Link href="/seeds" className="font-semibold text-[#4CAF50] hover:underline">Best Seeds</Link>
+            </thead>
+            <tbody>
+              {robuxGears.map((gear) => (
+                <tr key={gear.n} className="border-b border-[#3c3c3c]/10 last:border-0">
+                  <td className="px-3 py-2 font-semibold text-[#4b4b4b]">{gear.n}</td>
+                  <td className="px-3 py-2 font-mono text-xs text-[#4b4b4b]">{gear.c}</td>
+                  <td className="px-3 py-2 text-xs text-[#777]">{gear.f}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-      </div>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="mb-3 text-xl font-extrabold text-[#2E3B2E]">Gear FAQ</h2>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {faq.map(([question, answer]) => (
+            <section key={question} className="rounded-xl border border-[#e5e7eb] bg-white p-4">
+              <h3 className="text-sm font-extrabold text-[#2E3B2E]">{question}</h3>
+              <p className="mt-1 text-sm leading-6 text-[#777]">{answer}</p>
+            </section>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-8 rounded-xl border border-[#e5e7eb] bg-[#F9FAFB] p-5">
+        <h2 className="text-sm font-extrabold text-[#4b4b4b]">Next gear routes</h2>
+        <div className="mt-2 flex flex-wrap gap-3 text-sm">
+          <Link href="/wheelbarrow" className="font-semibold text-[#4CAF50] hover:underline">
+            Wheelbarrow Guide
+          </Link>
+          <Link href="/night-stealing" className="font-semibold text-[#4CAF50] hover:underline">
+            Night Defense
+          </Link>
+          <Link href="/seeds" className="font-semibold text-[#4CAF50] hover:underline">
+            Best Seeds
+          </Link>
+          <Link href="/tier-list" className="font-semibold text-[#4CAF50] hover:underline">
+            Tier List
+          </Link>
+        </div>
+      </section>
     </main>
   );
 }

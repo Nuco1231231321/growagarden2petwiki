@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { gag2Badges, gag2Images } from "@/lib/data";
 import type { Metadata } from "next";
 import { RelatedGuides } from "@/components/related-guides";
 import { Breadcrumbs, GuideJsonLd } from "@/components/seo-helpers";
+import { gag2Badges, gag2Images } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Grow a Garden 2 Badges & Achievements: All 23 & How to Unlock",
@@ -45,9 +45,9 @@ const breadcrumbs = [
 ];
 
 const badgeRoutes = [
-  ["Easiest badges first", "Carrot!, First Pet!, Egg Hatcher!", "Start with tutorial progress, first pet, and first egg hatch."],
-  ["Hardest badges", "1000ft Plant!, 100kg Fruit!", "Use late-game crops, growth pets, sprinklers, weather, and patience."],
-  ["Limited badges", "OG, We are so back!", "Complete limited event tasks before they leave."],
+  ["Start here", "Carrot!, First Pet!, Egg Hatcher!", "Easy early badges that follow your normal route instead of forcing special grinding."],
+  ["Long-term grind", "1000ft Plant!, 100kg Fruit!", "These are late goals. Do not chase them before the account can support it."],
+  ["Limited route", "OG, We are so back!", "Limited badges are timing-sensitive, so they matter only while the event still exists."],
 ];
 
 export default function BadgesPage() {
@@ -61,22 +61,17 @@ export default function BadgesPage() {
         breadcrumbs={breadcrumbs}
       />
       <Breadcrumbs items={breadcrumbs} />
+
       <div className="mb-6 flex items-center gap-4">
-        <Image
-          src="/grow-a-garden-2/badges/23_OG_Badge.webp"
-          alt="Grow a Garden 2 badge icon"
-          width={64}
-          height={64}
-          className="rounded-xl bg-[#f5f9f3] p-1"
-        />
+        <Image src="/grow-a-garden-2/badges/23_OG_Badge.webp" alt="Grow a Garden 2 badge icon" width={64} height={64} className="rounded-xl bg-[#f5f9f3] p-1" />
         <div>
           <h1 className="text-3xl font-extrabold text-[#2E3B2E] sm:text-4xl">Grow a Garden 2 Badges & Achievements</h1>
-          <p className="text-sm text-[#777]">23 badges across plant height, fruit weight, pets, mutations, and limited events.</p>
+          <p className="text-sm text-[#777]">Use badges as route checkpoints, not as random side goals that break your main progress.</p>
         </div>
       </div>
 
       <section className="mb-8 rounded-2xl border-2 border-[#C8E6C9] bg-[#F6FBF4] p-5">
-        <h2 className="text-xl font-extrabold text-[#2E3B2E]">Badge Route</h2>
+        <h2 className="text-xl font-extrabold text-[#2E3B2E]">Quick answer</h2>
         <div className="mt-4 grid gap-3 sm:grid-cols-3">
           {badgeRoutes.map(([title, badges, tip]) => (
             <div key={title} className="rounded-xl bg-white p-4">
@@ -87,20 +82,6 @@ export default function BadgesPage() {
           ))}
         </div>
       </section>
-
-      <div className="mb-8 grid gap-2 sm:grid-cols-3">
-        {[
-          { label: "Easiest", badges: "Carrot! + First Pet!", tip: "Start with the tutorial and first pet route." },
-          { label: "Hardest", badges: "1000ft Plant! + 100kg Fruit!", tip: "Use late-game crops, growth gear, and patience." },
-          { label: "Limited", badges: "OG + We are so back!", tip: "Finish limited-time tasks before they leave." },
-        ].map((item) => (
-          <div key={item.label} className="rounded-xl bg-[#C8E6C9]/50 p-4">
-            <span className="text-[10px] font-bold uppercase text-[#777]">{item.label}</span>
-            <p className="text-sm font-bold text-[#4b4b4b]">{item.badges}</p>
-            <p className="text-xs text-[#777]">{item.tip}</p>
-          </div>
-        ))}
-      </div>
 
       {categories.map((category) => {
         const badges = gag2Badges.filter((badge) => badge.category === category);
@@ -131,11 +112,13 @@ export default function BadgesPage() {
         );
       })}
 
-      <RelatedGuides guides={[
-        { href: "/pets", title: "All Pets", detail: "Egg hatching gives pets", image: gag2Images.pet("bunny") },
-        { href: "/eggs", title: "Egg Guide", detail: "Hatch eggs for pet badges", emoji: "Eggs" },
-        { href: "/mutations", title: "Mutations", detail: "Get mutation badges", emoji: "Mutations" },
-      ]} />
+      <RelatedGuides
+        guides={[
+          { href: "/pets", title: "All Pets", detail: "Use egg and pet progress to clear the easy pet-related badges naturally.", image: gag2Images.pet("bunny") },
+          { href: "/eggs", title: "Egg Guide", detail: "Egg hatching badges make more sense when your guild and pet route are already working.", emoji: "Eggs" },
+          { href: "/mutations", title: "Mutations", detail: "Mutation badges become easier once the crop route is strong enough to hold for boosts.", emoji: "Mutations" },
+        ]}
+      />
     </main>
   );
 }

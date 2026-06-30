@@ -9,21 +9,21 @@ export const metadata: Metadata = {
 };
 
 const crates = [
-  ["Ladder","Common","30K / 19R","Ladder(40%), Dark Oak(30%), Gold(20%), Rainbow(10%)"],
-  ["Bench","Uncommon","60K / 23R","Normal(25%), Corner(25%), White(20%), Dark(15%), Log(10%), Flower(5%)"],
-  ["Light","Uncommon","90K / 39R","Moss(30%), Rope(26%), Small Hanging(22%), Bonfire(15%), Star(7%)"],
-  ["Sign","Rare","150K / 49R","Sign(70%), Gold(25%), Rainbow(4%), Big(1%)"],
-  ["Arch","Rare","200K / 59R","Wood(35%), White(30%), Small(25%), Circle(10%)"],
-  ["Roleplay","Rare","300K / 63R","Beach Towel, Bookcase, Carpet, Clock, Wood Floor, Wood Wall, Fountain"],
-  ["Bridge","Epic","700K / 89R","Big(70%), Red(25%), Small(4%), White(1%)"],
-  ["Spring","Epic","~900K / 99R","Uncommon(68%), Rare(26%), Mythic(5%), Super(1%)"],
-  ["Seesaw","Epic","1.5M / 149R","Wood(80%), Gold(15%), Rainbow(5%)"],
-  ["Conveyor","Epic","700K / 79R","Common(43%), Uncommon(25%), Rare(20%), Epic(10%), Super(2%)"],
-  ["Owner Door","Legendary","1.5M / 179R","Oak(75%), Dark Oak(20%), Gold(4%), Rainbow(1%)"],
-  ["Bear Trap","Legendary","1.5M / 179R","Common(90%), Gold(8%), Rainbow(2%)"],
-  ["Fence","Legendary","7-10M / 299R","14 fence types, Rainbow(0.86%)"],
-  ["Teleporter Pad","Mythic","20-50M / 499R","Pad(80%), Big(15%), Huge(5%)"],
-];
+  ["Ladder", "Common", "30K / 19R", "Ladder(40%), Dark Oak(30%), Gold(20%), Rainbow(10%)"],
+  ["Bench", "Uncommon", "60K / 23R", "Normal(25%), Corner(25%), White(20%), Dark(15%), Log(10%), Flower(5%)"],
+  ["Light", "Uncommon", "90K / 39R", "Moss(30%), Rope(26%), Small Hanging(22%), Bonfire(15%), Star(7%)"],
+  ["Sign", "Rare", "150K / 49R", "Sign(70%), Gold(25%), Rainbow(4%), Big(1%)"],
+  ["Arch", "Rare", "200K / 59R", "Wood(35%), White(30%), Small(25%), Circle(10%)"],
+  ["Roleplay", "Rare", "300K / 63R", "Beach Towel, Bookcase, Carpet, Clock, Wood Floor, Wood Wall, Fountain"],
+  ["Bridge", "Epic", "700K / 89R", "Big(70%), Red(25%), Small(4%), White(1%)"],
+  ["Spring", "Epic", "~900K / 99R", "Uncommon(68%), Rare(26%), Mythic(5%), Super(1%)"],
+  ["Seesaw", "Epic", "1.5M / 149R", "Wood(80%), Gold(15%), Rainbow(5%)"],
+  ["Conveyor", "Epic", "700K / 79R", "Common(43%), Uncommon(25%), Rare(20%), Epic(10%), Super(2%)"],
+  ["Owner Door", "Legendary", "1.5M / 179R", "Oak(75%), Dark Oak(20%), Gold(4%), Rainbow(1%)"],
+  ["Bear Trap", "Legendary", "1.5M / 179R", "Common(90%), Gold(8%), Rainbow(2%)"],
+  ["Fence", "Legendary", "7-10M / 299R", "14 fence types, Rainbow(0.86%)"],
+  ["Teleporter Pad", "Mythic", "20-50M / 499R", "Pad(80%), Big(15%), Huge(5%)"],
+] as const;
 
 const breadcrumbs = [
   { name: "Home", href: "/" },
@@ -31,18 +31,23 @@ const breadcrumbs = [
   { name: "Props & Crates", href: "/props" },
 ];
 
-const bestCrates = [
-  ["1", "Bear Trap Crate", "Best first defensive crate because traps directly punish thieves."],
-  ["2", "Fence Crate", "Use fences when your garden needs a real perimeter."],
-  ["3", "Owner Door Crate", "Add after fences so the garden stays usable for you."],
-  ["4", "Teleporter Pad Crate", "Expensive movement upgrade for large farms, not an early priority."],
+const firstBuys = [
+  ["Buy first", "Bear Trap Crate", "Best first prop route when night defense is already becoming a real problem."],
+  ["Buy after that", "Fence Crate and Owner Door", "Use these when crop value is high enough that a real perimeter finally pays back."],
+  ["Buy later", "Teleporter Pad and decorative crates", "These are comfort or style upgrades, not route-saving tools."],
+];
+
+const warnings = [
+  ["Do not build defense too early", "Props are weak buys if your crops are still cheap and easy to replace."],
+  ["Do not buy decorative crates before real upgrades", "Seeds, pets, sprinklers, and basic defense should come first."],
+  ["Do not overbuild around weak crops", "A giant fence around low-value filler crops is usually wasted money."],
 ];
 
 const defensiveProps = [
-  ["Bear Trap", "Stops or punishes thieves", "Place on common entry paths and near expensive crops."],
-  ["Fence", "Blocks routes into your garden", "Use around the crop area before night."],
-  ["Owner Door", "Restricts access through your fence", "Pair with fences once the perimeter is built."],
-  ["Teleporter Pad", "Moves you around quickly", "Use for large gardens and defense response routes."],
+  ["Bear Trap", "Punish thieves directly", "Best on obvious entry paths and near the crops that matter most."],
+  ["Fence", "Block easy access", "Use only when your plot finally has enough value to protect with a perimeter."],
+  ["Owner Door", "Keep your layout usable while limiting others", "Best after the fence route is already in place."],
+  ["Teleporter Pad", "Move fast in large layouts", "Late convenience tool, not an early defense answer."],
 ];
 
 export default function PropsPage() {
@@ -56,95 +61,102 @@ export default function PropsPage() {
         breadcrumbs={breadcrumbs}
       />
       <Breadcrumbs items={breadcrumbs} />
+
       <h1 className="text-3xl font-extrabold text-[#2E3B2E]">Grow a Garden 2 Props & Crates Guide</h1>
-      <p className="mt-2 text-sm text-[#777]">14 crate types from <strong>Charlotte</strong> at the Props Shop (rotates every 5 min). Sheckles or Robux.</p>
+      <p className="mt-2 text-sm text-[#777]">
+        Use props when the problem is night defense or layout control. Do not treat them as early progression items.
+      </p>
 
       <section className="mt-6 rounded-2xl border-2 border-[#C8E6C9] bg-[#F6FBF4] p-5">
-        <h2 className="text-xl font-extrabold text-[#2E3B2E]">Best Crates to Buy First</h2>
-        <div className="mt-4 grid gap-3 sm:grid-cols-2">
-          {bestCrates.map(([rank, crate, body]) => (
-            <div key={crate} className="rounded-xl bg-white p-4">
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#4CAF50] text-xs font-black text-white">{rank}</span>
-              <h3 className="mt-3 text-sm font-extrabold text-[#4b4b4b]">{crate}</h3>
-              <p className="mt-1 text-sm leading-6 text-[#777]">{body}</p>
-            </div>
-          ))}
+        <h2 className="text-xl font-extrabold text-[#2E3B2E]">Quick answer</h2>
+        <p className="mt-2 text-sm leading-6 text-[#4b4b4b]">
+          Bear Trap is the first prop route that usually matters. Fences and Owner Door become worth it later. Decorative crates and premium layout tools should wait until the crop route and defense route are already stable.
+        </p>
+      </section>
+
+      <section className="mt-8 grid gap-3 sm:grid-cols-3">
+        {firstBuys.map(([label, title, body]) => (
+          <div key={title} className="rounded-xl border border-[#e5e7eb] bg-white p-4">
+            <p className="text-xs font-black uppercase tracking-[0.12em] text-[#4CAF50]">{label}</p>
+            <h2 className="mt-1 text-sm font-extrabold text-[#4b4b4b]">{title}</h2>
+            <p className="mt-1 text-sm leading-6 text-[#777]">{body}</p>
+          </div>
+        ))}
+      </section>
+
+      <section className="mt-8 grid gap-3 sm:grid-cols-3">
+        {warnings.map(([title, body]) => (
+          <div key={title} className="rounded-xl border border-[#FFF0C2] bg-[#FFF8E1] p-4">
+            <h2 className="text-sm font-extrabold text-[#2E3B2E]">{title}</h2>
+            <p className="mt-1 text-sm leading-6 text-[#777]">{body}</p>
+          </div>
+        ))}
+      </section>
+
+      <section className="mt-8">
+        <h2 className="mb-3 text-xl font-extrabold text-[#2E3B2E]">Defensive props that actually matter</h2>
+        <div className="overflow-x-auto rounded-xl border border-[#e5e7eb] bg-white">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-[#e5e7eb] bg-[#F9FAFB]">
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Prop</th>
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Best use</th>
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">When to use it</th>
+              </tr>
+            </thead>
+            <tbody>
+              {defensiveProps.map((row) => (
+                <tr key={row[0]} className="border-b border-[#e5e7eb] last:border-0">
+                  <td className="px-3 py-2 font-bold text-[#4b4b4b]">{row[0]}</td>
+                  <td className="px-3 py-2 text-xs text-[#777]">{row[1]}</td>
+                  <td className="px-3 py-2 text-xs text-[#777]">{row[2]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
 
-      <h2 className="text-xl font-extrabold text-[#2E3B2E] mt-6 mb-3">All Crates</h2>
-      <div className="overflow-x-auto rounded-xl border border-[#3c3c3c]/20 bg-white">
-        <table className="w-full text-sm">
-          <thead><tr className="border-b border-[#3c3c3c]/20 bg-[#F9FAFB]"><th className="px-3 py-2 text-left font-bold text-[#777] text-xs">Crate</th><th className="px-3 py-2 text-left font-bold text-[#777] text-xs">Rarity</th><th className="px-3 py-2 text-left font-bold text-[#777] text-xs">Price</th><th className="px-3 py-2 text-left font-bold text-[#777] text-xs">Contents (drop rates)</th></tr></thead>
-          <tbody>
-            {crates.map((c) => (
-              <tr key={c[0]} className="border-b border-[#3c3c3c]/10 last:border-0">
-                <td className="px-3 py-2 font-bold text-[#4b4b4b]">{c[0]}</td>
-                <td className="px-3 py-2 text-xs text-[#777]">{c[1]}</td>
-                <td className="px-3 py-2 font-mono text-xs text-[#4b4b4b]">{c[2]}</td>
-                <td className="px-3 py-2 text-xs text-[#777] max-w-[300px]">{c[3]}</td>
+      <section className="mt-8">
+        <h2 className="mb-3 text-xl font-extrabold text-[#2E3B2E]">All crates</h2>
+        <div className="overflow-x-auto rounded-xl border border-[#3c3c3c]/20 bg-white">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-[#3c3c3c]/20 bg-[#F9FAFB]">
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Crate</th>
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Rarity</th>
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Price</th>
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Contents</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      <h2 className="text-xl font-extrabold text-[#2E3B2E] mt-8 mb-3">How Props Work</h2>
-      <p className="text-sm text-[#777] leading-relaxed">
-        Props are decorative and functional items placed in your garden. Each prop comes from a specific crate purchased from Charlotte. Crates contain random items with different drop rates — rarer items have lower odds. You can buy crates with either Sheckles or Robux. The Props Shop <strong>restocks every 5 minutes</strong> — if the crate you want is not available, wait and check back.
-      </p>
-      <p className="mt-3 text-sm text-[#777] leading-relaxed">
-        Props serve three main purposes: <strong>Defense</strong> (Bear Traps stop thieves, Fences block entry, Owner Doors restrict access), <strong>Movement</strong> (Conveyors move items, Teleporter Pads teleport you, Ladders reach high areas), and <strong>Decoration</strong> (Benches, Lights, Signs, Arches, Bridges — purely cosmetic but fun for creative gardens).
-      </p>
-
-      <h2 className="text-xl font-extrabold text-[#2E3B2E] mt-8 mb-3">Defensive Crate Priority</h2>
-      <div className="grid gap-3 sm:grid-cols-3">
-        {[
-          { priority: "1st", crate: "Bear Trap Crate", reason: "Traps stop thieves in their tracks. Most effective single defensive item." },
-          { priority: "2nd", crate: "Fence Crate", reason: "Build walls around your garden. 14 fence types — Rainbow fence is 0.86% drop." },
-          { priority: "3rd", crate: "Owner Door Crate", reason: "Once your perimeter is fenced, add a door only you can open. Rainbow door is 1%." },
-        ].map((p) => (
-          <div key={p.priority} className="rounded-xl border-2 border-[#FFC107]/20 bg-[#FFF8E1] p-4">
-            <span className="text-xs font-black text-[#FFC107]">{p.priority}</span>
-            <p className="mt-1 text-sm font-extrabold text-[#4b4b4b]">{p.crate}</p>
-            <p className="mt-1 text-xs text-[#777]">{p.reason}</p>
-          </div>
-        ))}
-      </div>
-
-      <h2 className="text-xl font-extrabold text-[#2E3B2E] mt-8 mb-3">Defensive Props Table</h2>
-      <div className="overflow-x-auto rounded-xl border border-[#e5e7eb] bg-white">
-        <table className="w-full text-sm">
-          <thead><tr className="border-b border-[#e5e7eb] bg-[#F9FAFB]"><th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Prop</th><th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Use</th><th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Best placement</th></tr></thead>
-          <tbody>
-            {defensiveProps.map((row) => (
-              <tr key={row[0]} className="border-b border-[#e5e7eb] last:border-0">
-                <td className="px-3 py-2 font-bold text-[#4b4b4b]">{row[0]}</td>
-                <td className="px-3 py-2 text-xs text-[#777]">{row[1]}</td>
-                <td className="px-3 py-2 text-xs text-[#777]">{row[2]}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      <h2 className="text-xl font-extrabold text-[#2E3B2E] mt-8 mb-3">Pro Tips</h2>
-      <ul className="space-y-2 text-sm text-[#777]">
-        <li>• <strong>Stack Bear Traps</strong> — place multiple traps at common entry points. Thieves can avoid one trap but rarely dodge three.</li>
-        <li>• <strong>Fence + Door combo</strong> — a fully fenced garden with an Owner Door makes your crops nearly untouchable at night.</li>
-        <li>• <strong>Teleporter Pads</strong> are the most expensive crate (20-50M) but let you instantly teleport across your garden — great for large farms.</li>
-        <li>• <strong>Conveyor belts</strong> automate crop movement between growing areas and storage. Super Conveyor is a 2% drop.</li>
-        <li>• <strong>Save Sheckles first</strong> — focus on crops and pets before investing heavily in decorative crates like Seesaw, Arch, or Bridge.</li>
-      </ul>
-
-      <div className="mt-8 rounded-xl border border-[#e5e7eb] bg-[#F9FAFB] p-5">
-        <h2 className="text-sm font-extrabold text-[#4b4b4b]">Next Defense Guides</h2>
-        <div className="mt-2 flex flex-wrap gap-3 text-sm">
-          <Link href="/night-stealing" className="font-semibold text-[#4CAF50] hover:underline">Night Stealing Defense</Link>
-          <Link href="/gears" className="font-semibold text-[#4CAF50] hover:underline">Best Gears</Link>
-          <Link href="/pets" className="font-semibold text-[#4CAF50] hover:underline">Defense Pets</Link>
+            </thead>
+            <tbody>
+              {crates.map((crate) => (
+                <tr key={crate[0]} className="border-b border-[#3c3c3c]/10 last:border-0">
+                  <td className="px-3 py-2 font-bold text-[#4b4b4b]">{crate[0]}</td>
+                  <td className="px-3 py-2 text-xs text-[#777]">{crate[1]}</td>
+                  <td className="px-3 py-2 font-mono text-xs text-[#4b4b4b]">{crate[2]}</td>
+                  <td className="max-w-[300px] px-3 py-2 text-xs text-[#777]">{crate[3]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-      </div>
+      </section>
+
+      <section className="mt-8 rounded-xl border border-[#e5e7eb] bg-[#F9FAFB] p-5">
+        <h2 className="text-sm font-extrabold text-[#4b4b4b]">Next defense guides</h2>
+        <div className="mt-2 flex flex-wrap gap-3 text-sm">
+          <Link href="/night-stealing" className="font-semibold text-[#4CAF50] hover:underline">
+            Night Stealing Defense
+          </Link>
+          <Link href="/gears" className="font-semibold text-[#4CAF50] hover:underline">
+            Best Gears
+          </Link>
+          <Link href="/pets" className="font-semibold text-[#4CAF50] hover:underline">
+            Defense Pets
+          </Link>
+        </div>
+      </section>
     </main>
   );
 }

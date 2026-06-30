@@ -12,7 +12,10 @@ interface Guide {
 export function RelatedGuides({ guides }: { guides: Guide[] }) {
   return (
     <div className="mt-10 border-t-2 border-graphite pt-8">
-      <h2 className="text-xl font-extrabold text-soil mb-4">Explore More Guides</h2>
+      <h2 className="mb-2 text-xl font-extrabold text-soil">What to open next</h2>
+      <p className="mb-4 max-w-2xl text-sm font-medium leading-6 text-ash">
+        Pick the next page that helps you finish the route you are already on, instead of jumping into unrelated systems too early.
+      </p>
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {guides.map((g) => (
           <Link
@@ -25,8 +28,8 @@ export function RelatedGuides({ guides }: { guides: Guide[] }) {
             )}
             {g.emoji && <span className="text-2xl shrink-0">{g.emoji}</span>}
             <div>
-              <p className="text-sm font-extrabold text-charcoal group-hover:text-garden transition-colors">{g.title}</p>
-              <p className="text-xs text-ash mt-0.5">{g.detail}</p>
+              <p className="text-sm font-extrabold text-charcoal transition-colors group-hover:text-garden">{g.title}</p>
+              <p className="mt-0.5 text-xs leading-5 text-ash">{g.detail}</p>
             </div>
           </Link>
         ))}

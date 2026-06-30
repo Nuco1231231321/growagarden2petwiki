@@ -21,6 +21,12 @@ const checks = [
   ["Treat rewards as unconfirmed until shown", "Vote rewards can change. Do not spend Robux or trade items based only on a rumor."],
 ];
 
+const decisionRows = [
+  ["I only want to play", "Ignore voting and open the Roblox game page.", "Voting is not required to enter the game."],
+  ["I want to check a voting link", "Verify the domain and start from Roblox or a trusted in-game path if possible.", "That cuts down the risk of fake reward pages."],
+  ["A page asks for unusual login details", "Stop immediately.", "That is the kind of step that turns a vote check into an account risk."],
+];
+
 const voteFaq = [
   ["What is gag.gg vote?", "gag.gg has a Vote link and Grow a Garden 2 tools. Use it as a player tool, but still verify links and avoid entering passwords outside Roblox."],
   ["Do I need to vote to play?", "No. You can play Grow a Garden 2 from the Roblox game page without using a voting page."],
@@ -54,6 +60,30 @@ export default function VotePage() {
               <p className="mt-1 text-sm leading-6 text-[#777]">{body}</p>
             </section>
           ))}
+        </div>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="mb-3 text-xl font-extrabold text-[#2E3B2E]">What should you do?</h2>
+        <div className="overflow-x-auto rounded-xl border border-[#e5e7eb] bg-white">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-[#e5e7eb] bg-[#F9FAFB]">
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Situation</th>
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Best move</th>
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              {decisionRows.map((row) => (
+                <tr key={row[0]} className="border-b border-[#e5e7eb] last:border-0">
+                  <td className="px-3 py-2 font-bold text-[#4b4b4b]">{row[0]}</td>
+                  <td className="px-3 py-2 text-xs text-[#4CAF50]">{row[1]}</td>
+                  <td className="px-3 py-2 text-xs text-[#777]">{row[2]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
 

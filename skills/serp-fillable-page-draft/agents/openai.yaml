@@ -1,0 +1,4 @@
+interface:
+  display_name: "游戏 SERP 可填充草稿"
+  short_description: "深度调研 SERP，并生成带人工补位槽位的页面草稿。"
+  default_prompt: "使用 $serp-fillable-page-draft 深度调研一个游戏关键词，并输出带截图、验证、补丁和判断占位符的页面草稿。"

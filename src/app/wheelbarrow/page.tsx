@@ -37,6 +37,12 @@ const buyDecisions = [
   ["Good buy", "Your farm earns 500K back quickly and night defense is already handled.", "Pick it up when George stocks it and use it for team movement."],
 ];
 
+const buyBoundaries = [
+  ["Not a first farming upgrade", "Wheelbarrow does not fix weak crop income, slow growth, or missing early pets."],
+  ["Best in team play", "If you mostly play solo, the value drops because carrying players is the main reason to own it."],
+  ["Skip it when 500K still hurts", "If buying Wheelbarrow delays Bee, Gnome, Deer, or better crops, the timing is still wrong."],
+];
+
 const useSteps = [
   ["Equip it", "Open your gear inventory and equip Wheelbarrow before moving near another player."],
   ["Move into position", "Use it around teammates or players you want to carry during routes or night chaos."],
@@ -187,6 +193,18 @@ export default function WheelbarrowPage() {
           </tbody>
         </table>
       </div>
+
+      <section className="mt-8 rounded-xl border border-[#FFF0C2] bg-[#FFF8E1] p-5">
+        <h2 className="text-xl font-extrabold text-[#2E3B2E]">When Wheelbarrow is the wrong buy</h2>
+        <div className="mt-3 grid gap-3 sm:grid-cols-3">
+          {buyBoundaries.map(([title, body]) => (
+            <div key={title} className="rounded-xl bg-white p-4">
+              <h3 className="text-sm font-extrabold text-[#2E3B2E]">{title}</h3>
+              <p className="mt-1 text-sm leading-6 text-[#777]">{body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <h2 className="mt-8 mb-3 text-xl font-extrabold text-[#2E3B2E]">Is Wheelbarrow Worth It?</h2>
       <div className="mb-6">

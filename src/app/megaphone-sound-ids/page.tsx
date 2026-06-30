@@ -46,6 +46,12 @@ const useSteps = [
   "To change music, reopen the Megaphone menu and replace the old ID with a new one.",
 ];
 
+const decisionRows = [
+  ["I just want to test the Megaphone", "Use a short recognizable ID first.", "That tells you quickly whether the tool works before you try longer tracks."],
+  ["The audio is silent", "Try another short ID and re-check equip state before assuming the Megaphone is broken.", "Many failures come from removed IDs or a simple setup miss."],
+  ["I am still poor in the early route", "Skip Megaphone for now.", "Seeds, sprinklers, early pets, and defense help progression more than social audio."],
+];
+
 const fixes = [
   ["The ID was removed", "Roblox audio can be moderated or made unavailable. If one ID stays silent, test a safer track such as Raining Tacos or Stadium Rave."],
   ["The ID was typed wrong", "Use only the number. Remove spaces, labels, brackets, punctuation, and extra text before pressing enter."],
@@ -124,6 +130,30 @@ export default function MegaphoneSoundIdsPage() {
                   <td className="select-all px-3 py-2 font-mono text-xs font-black text-[#2E3B2E]">{id}</td>
                   <td className="px-3 py-2 text-xs font-bold text-[#4CAF50]">{type}</td>
                   <td className="px-3 py-2 text-xs leading-5 text-[#777]">{notes}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="mb-3 text-xl font-extrabold text-[#2E3B2E]">What should you do first?</h2>
+        <div className="overflow-x-auto rounded-xl border border-[#e5e7eb] bg-white">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-[#e5e7eb] bg-[#F9FAFB]">
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Situation</th>
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Best move</th>
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              {decisionRows.map((row) => (
+                <tr key={row[0]} className="border-b border-[#e5e7eb] last:border-0">
+                  <td className="px-3 py-2 font-bold text-[#4b4b4b]">{row[0]}</td>
+                  <td className="px-3 py-2 text-xs text-[#4CAF50]">{row[1]}</td>
+                  <td className="px-3 py-2 text-xs text-[#777]">{row[2]}</td>
                 </tr>
               ))}
             </tbody>

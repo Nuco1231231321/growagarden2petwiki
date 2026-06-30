@@ -1,9 +1,8 @@
-/* eslint-disable react/no-unescaped-entities */
 import Image from "next/image";
 import Link from "next/link";
-import { gag2Images } from "@/lib/data";
 import type { Metadata } from "next";
 import { Breadcrumbs, GuideJsonLd } from "@/components/seo-helpers";
+import { gag2Images } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Grow a Garden 2 Guilds: How to Create, Join & Earn Weekly Rewards",
@@ -17,11 +16,35 @@ const breadcrumbs = [
   { name: "Guilds", href: "/guild" },
 ];
 
+const quickAnswers = [
+  ["Want eggs faster?", "Join an active guild before thinking about creating your own."],
+  ["No public browser", "Guild joining is invite-based, so the mailbox matters more than the Guild Stand."],
+  ["Main reward path", "Guilds matter because they turn crop progress into eggs and weekly rewards."],
+];
+
+const decisionRows = [
+  ["Join a guild", "You mostly want eggs and weekly rewards quickly.", "Joining an active guild is the fastest route because you skip the setup burden."],
+  ["Create a guild", "You already have reliable players and want control over invites and roles.", "Creating only makes sense if you can keep the guild active enough to earn rewards."],
+  ["Do not create yet", "You are playing mostly solo or do not have active members lined up.", "A weak self-made guild usually slows reward progress instead of helping it."],
+];
+
 const rewardSteps = [
-  ["Join an active guild", "Accept an invite through your garden mailbox so you can contribute to weekly rewards."],
-  ["Grow heavier crops", "Use better seeds, Deer, sprinklers, and mutations to raise your heaviest crop contribution."],
-  ["Help weekly ranking", "Guild rewards improve when active members contribute strong crops."],
-  ["Use rewards for eggs", "Claim reward eggs, place them in your garden, then hatch pets for your next upgrade route."],
+  ["Join an active guild", "An inactive guild gives you the badge of being in a guild without the actual reward flow."],
+  ["Contribute your heaviest crop", "Weekly progress is built from strong crop contribution, not from simply logging in."],
+  ["Use better crop routes over time", "Guild rewards improve as your crop quality improves, so good seed, pet, and mutation routes still matter."],
+  ["Turn rewards into egg progress", "The guild route is most useful when it feeds straight back into pets and account growth."],
+];
+
+const boundaries = [
+  ["Mailbox, not Guild Stand", "The most common mistake is looking for invites in the wrong place."],
+  ["Do not pay 99 Robux just to test the system", "If your real need is eggs or rewards, joining first is usually the better route."],
+  ["A dead guild is barely better than no guild", "Weekly rewards depend on active members actually contributing."],
+];
+
+const roles = [
+  ["Owner", "Can create, invite, promote, and disband.", "Best only if you are running the group long term."],
+  ["Elder", "Can invite and help recruit.", "Useful when you already trust the player and need support."],
+  ["Member", "Standard contributor role.", "Enough for most players whose main goal is rewards."],
 ];
 
 export default function GuildPage() {
@@ -35,74 +58,118 @@ export default function GuildPage() {
         breadcrumbs={breadcrumbs}
       />
       <Breadcrumbs items={breadcrumbs} />
-      <div className="flex items-center gap-4 mb-6">
+
+      <div className="mb-6 flex items-center gap-4">
         <Image src={gag2Images.icon} alt="GAG2" width={56} height={56} className="rounded-xl" />
-        <div><h1 className="text-3xl font-extrabold text-[#2E3B2E]">Grow a Garden 2 Guilds Guide</h1><p className="text-sm text-[#777]">Teams of up to 50 players — compete for weekly rewards</p></div>
+        <div>
+          <h1 className="text-3xl font-extrabold text-[#2E3B2E]">Grow a Garden 2 Guilds Guide</h1>
+          <p className="text-sm text-[#777]">Use guilds for weekly rewards and eggs, not just for the label.</p>
+        </div>
       </div>
 
-      <div className="p-4 rounded-xl border-2 border-[#E53935]/20 bg-[#FFEBEE] mb-6">
-        <p className="text-sm font-extrabold text-[#E53935]">⚠️ Common Confusion</p>
-        <p className="mt-1 text-sm text-[#E53935]/80">There is <strong>no public guild browser</strong>. Joining is <strong>invite-only</strong>. Invites go to your <strong>garden mailbox</strong>, NOT to Gilbert at the Guild Stand.</p>
-      </div>
-
-      <h2 className="text-xl font-extrabold text-[#2E3B2E] mb-3">How to Join</h2>
-      <ol className="space-y-2">
-        {["Get invited by a guild <strong>Owner</strong> or <strong>Elder</strong>.","Go to the <strong>mailbox in front of your garden</strong> (NOT the Guild Stand).","Open Mail tab → click <strong>Join</strong>."].map((s,i) => (
-          <li key={i} className="flex gap-3"><span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#4CAF50] text-xs font-extrabold text-white">{i+1}</span><span className="text-sm text-[#4b4b4b]" dangerouslySetInnerHTML={{__html:s}} /></li>
+      <section className="grid gap-3 rounded-2xl border-2 border-[#C8E6C9] bg-[#F6FBF4] p-5 sm:grid-cols-3">
+        {quickAnswers.map(([title, body]) => (
+          <div key={title} className="rounded-xl bg-white p-4">
+            <p className="text-xs font-black uppercase tracking-[0.12em] text-[#4CAF50]">{title}</p>
+            <p className="mt-1 text-sm font-semibold leading-6 text-[#4b4b4b]">{body}</p>
+          </div>
         ))}
-      </ol>
+      </section>
 
-      <h2 className="text-xl font-extrabold text-[#2E3B2E] mt-8 mb-3">Roles & Limits</h2>
-      <div className="overflow-x-auto rounded-xl border border-[#3c3c3c]/20 bg-white">
-        <table className="w-full text-sm">
-          <thead><tr className="border-b border-[#3c3c3c]/20 bg-[#F9FAFB]"><th className="px-3 py-2 text-left font-bold text-[#777] text-xs">Role</th><th className="px-3 py-2 text-left font-bold text-[#777] text-xs">Permissions</th><th className="px-3 py-2 text-left font-bold text-[#777] text-xs">Limit</th></tr></thead>
-          <tbody>
-            {[["Owner","Founder — invite, promote, disband","1"],["Elder","Officer — can invite","Max 5"],["Member","Standard — cannot invite","Up to 50"]].map((r) => (
-              <tr key={r[0]} className="border-b border-[#3c3c3c]/10 last:border-0"><td className="px-3 py-2 font-bold text-[#4b4b4b]">{r[0]}</td><td className="px-3 py-2 text-xs text-[#777]">{r[1]}</td><td className="px-3 py-2 text-xs text-[#4b4b4b]">{r[2]}</td></tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <section className="mt-6 rounded-xl border border-[#FFCDD2] bg-[#FFEBEE] p-5">
+        <h2 className="text-xl font-extrabold text-[#2E3B2E]">Most important guild mistake</h2>
+        <p className="mt-2 text-sm leading-6 text-[#777]">
+          There is no public guild browser. If someone invites you, check the garden mailbox. Do not waste time expecting the Guild Stand to show open guild listings.
+        </p>
+      </section>
 
-      <h2 className="text-xl font-extrabold text-[#2E3B2E] mt-8 mb-3">How to Create a Guild</h2>
-      <ol className="space-y-2">
-        {["Go to the central hub and speak to <strong>Gilbert</strong> at the Guild Stand.","Choose a <strong>Guild Name</strong>, <strong>Tag</strong> (abbreviation), and <strong>Description</strong>.","Customize colors for your guild name and tag.","Pay <strong>99 Robux</strong> to create. Default member limit is 20, expandable to 50."].map((s, i) => (
-          <li key={i} className="flex gap-3"><span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#4CAF50] text-xs font-extrabold text-white">{i+1}</span><span className="text-sm text-[#4b4b4b]" dangerouslySetInnerHTML={{__html:s}} /></li>
-        ))}
-      </ol>
+      <section className="mt-8">
+        <h2 className="mb-3 text-xl font-extrabold text-[#2E3B2E]">Should you join or create a guild?</h2>
+        <div className="overflow-x-auto rounded-xl border border-[#e5e7eb] bg-white">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-[#e5e7eb] bg-[#F9FAFB]">
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Decision</th>
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Your situation</th>
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Best move</th>
+              </tr>
+            </thead>
+            <tbody>
+              {decisionRows.map((row) => (
+                <tr key={row[0]} className="border-b border-[#e5e7eb] last:border-0">
+                  <td className="px-3 py-2 font-bold text-[#4b4b4b]">{row[0]}</td>
+                  <td className="px-3 py-2 text-xs text-[#777]">{row[1]}</td>
+                  <td className="px-3 py-2 text-xs text-[#777]">{row[2]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-      <h2 className="text-xl font-extrabold text-[#2E3B2E] mt-8 mb-3">Weekly Rewards</h2>
-      <p className="text-sm text-[#777] leading-relaxed">Guilds compete based on the <strong>combined weight of every member&apos;s heaviest single crop</strong>. Each member contributes 1 point per gram of their heaviest crop. Higher-ranked guilds earn exclusive rewards at the end of each week.</p>
-      <p className="mt-3 text-sm text-[#777]"><strong>Joining is free</strong> — you don't need to create a guild to participate. Find an active guild and contribute your heaviest crops to help the team rank higher. Guilds with active farmers consistently out-earn solo players.</p>
+      <section className="mt-8">
+        <h2 className="mb-3 text-xl font-extrabold text-[#2E3B2E]">How to get guild rewards that actually matter</h2>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {rewardSteps.map(([title, body], index) => (
+            <div key={title} className="rounded-xl border border-[#e5e7eb] bg-white p-4">
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#4CAF50] text-xs font-black text-white">{index + 1}</span>
+              <h3 className="mt-3 text-sm font-extrabold text-[#4b4b4b]">{title}</h3>
+              <p className="mt-1 text-sm leading-6 text-[#777]">{body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-      <h2 className="text-xl font-extrabold text-[#2E3B2E] mt-8 mb-3">How to Get Guild Rewards</h2>
-      <div className="grid gap-3 sm:grid-cols-2">
-        {rewardSteps.map(([title, body], index) => (
-          <div key={title} className="rounded-xl border border-[#e5e7eb] bg-white p-4">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#4CAF50] text-xs font-black text-white">{index + 1}</span>
-            <h3 className="mt-3 text-sm font-extrabold text-[#4b4b4b]">{title}</h3>
+      <section className="mt-8 grid gap-3 sm:grid-cols-3">
+        {boundaries.map(([title, body]) => (
+          <div key={title} className="rounded-xl border border-[#FFF0C2] bg-[#FFF8E1] p-4">
+            <h3 className="text-sm font-extrabold text-[#2E3B2E]">{title}</h3>
             <p className="mt-1 text-sm leading-6 text-[#777]">{body}</p>
           </div>
         ))}
-      </div>
+      </section>
 
-      <h2 className="text-xl font-extrabold text-[#2E3B2E] mt-8 mb-3">Pro Tips</h2>
-      <ul className="space-y-2 text-sm text-[#777]">
-        <li>• <strong>Accept invites at your garden mailbox</strong> — NOT at Gilbert's stand. This is the #1 confusion point.</li>
-        <li>• <strong>Elders can invite but cannot disband</strong> — assign Elder to trusted members for recruiting.</li>
-        <li>• <strong>Only Owners can disband</strong> — if you create a guild, you cannot leave without disbanding it first.</li>
-        <li>• <strong>Grow the heaviest crop possible</strong> — use Super Sprinklers, Deer pets, and mutations to maximize crop weight for guild ranking.</li>
-      </ul>
-
-      <div className="mt-8 rounded-xl border border-[#e5e7eb] bg-[#F9FAFB] p-5">
-        <h2 className="text-sm font-extrabold text-[#4b4b4b]">Guild Reward Route</h2>
-        <div className="mt-2 flex flex-wrap gap-3 text-sm">
-          <Link href="/eggs" className="font-semibold text-[#4CAF50] hover:underline">Egg Hatching</Link>
-          <Link href="/pets" className="font-semibold text-[#4CAF50] hover:underline">Pets Tier List</Link>
-          <Link href="/seeds" className="font-semibold text-[#4CAF50] hover:underline">Best Seeds</Link>
-          <Link href="/badges" className="font-semibold text-[#4CAF50] hover:underline">Badges</Link>
+      <section className="mt-8">
+        <h2 className="mb-3 text-xl font-extrabold text-[#2E3B2E]">Roles and when they matter</h2>
+        <div className="overflow-x-auto rounded-xl border border-[#3c3c3c]/20 bg-white">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-[#3c3c3c]/20 bg-[#F9FAFB]">
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Role</th>
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">What it does</th>
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Who needs it</th>
+              </tr>
+            </thead>
+            <tbody>
+              {roles.map((row) => (
+                <tr key={row[0]} className="border-b border-[#3c3c3c]/10 last:border-0">
+                  <td className="px-3 py-2 font-bold text-[#4b4b4b]">{row[0]}</td>
+                  <td className="px-3 py-2 text-xs text-[#777]">{row[1]}</td>
+                  <td className="px-3 py-2 text-xs text-[#777]">{row[2]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-      </div>
+      </section>
+
+      <section className="mt-8 rounded-xl border border-[#e5e7eb] bg-[#F9FAFB] p-5">
+        <h2 className="text-sm font-extrabold text-[#4b4b4b]">Guild reward route</h2>
+        <div className="mt-2 flex flex-wrap gap-3 text-sm">
+          <Link href="/eggs" className="font-semibold text-[#4CAF50] hover:underline">
+            Egg Hatching
+          </Link>
+          <Link href="/pets" className="font-semibold text-[#4CAF50] hover:underline">
+            Pets Tier List
+          </Link>
+          <Link href="/seeds" className="font-semibold text-[#4CAF50] hover:underline">
+            Best Seeds
+          </Link>
+          <Link href="/badges" className="font-semibold text-[#4CAF50] hover:underline">
+            Badges
+          </Link>
+        </div>
+      </section>
     </main>
   );
 }

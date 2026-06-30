@@ -36,6 +36,12 @@ const safetyRules = [
   ["Check announcements before spending", "Codes, vote rewards, admin events, and update times can change quickly."],
 ];
 
+const decisionRows = [
+  ["I want to play the game", "Open the Roblox game page first.", "That is the real play entry, not fan tools or guide pages."],
+  ["I want helper tools", "Use gag.gg only as a player tool site.", "Useful for extras, but it is still separate from the official play page."],
+  ["I am being asked to log in somewhere strange", "Stop and leave the page.", "A random site should not be the place where you hand over Roblox credentials."],
+];
+
 export default function OfficialWebsitePage() {
   return (
     <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
@@ -61,6 +67,30 @@ export default function OfficialWebsitePage() {
             <p className="mt-2 text-sm leading-6 text-[#777]">{card.body}</p>
           </a>
         ))}
+      </section>
+
+      <section className="mt-8">
+        <h2 className="mb-3 text-xl font-extrabold text-[#2E3B2E]">Which link should you use?</h2>
+        <div className="overflow-x-auto rounded-xl border border-[#e5e7eb] bg-white">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-[#e5e7eb] bg-[#F9FAFB]">
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Goal</th>
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Best move</th>
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              {decisionRows.map((row) => (
+                <tr key={row[0]} className="border-b border-[#e5e7eb] last:border-0">
+                  <td className="px-3 py-2 font-bold text-[#4b4b4b]">{row[0]}</td>
+                  <td className="px-3 py-2 text-xs text-[#4CAF50]">{row[1]}</td>
+                  <td className="px-3 py-2 text-xs text-[#777]">{row[2]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <h2 className="mt-8 mb-3 text-xl font-extrabold text-[#2E3B2E]">Before You Click</h2>
