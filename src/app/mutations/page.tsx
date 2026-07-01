@@ -17,34 +17,29 @@ const breadcrumbs = [
 ];
 
 const mutationPlan = [
-  ["Aurora", "Hold your best crops", "Aurora is a save-and-check event. Stop routine harvesting and wait to see which valuable plants actually improve."],
-  ["Gold / Midas-style", "Prioritize your highest-value harvests only", "Do not waste the event on filler crops if you already have late-game plants growing."],
-  ["Rainbow", "Save the crop, not just the harvest timer", "Rainbow is where Unicorn-style mutation routes matter. Keep the expensive crop alive long enough to benefit."],
-  ["Electric", "Leave the crop planted", "Electric-style value spikes are strongest when you resist the urge to harvest too early."],
-  ["Frozen / Snowfall", "Use growth gear while the event lasts", "Snowfall-style value is better when more good crops are still growing during the window."],
-  ["Bloodlit", "Defend first, then greed second", "If the mutation window overlaps with stealing risk, your first job is protecting the crop before dreaming about max value."],
-  ["Starstruck", "Check expensive crops after the sky clears", "Starfall-style value is strongest when you leave the best ripe crops untouched until the event is done."],
+  ["Top-end crop + safe plot", "Hold it", "If one boosted harvest changes your route and the crop can survive the night, the wait can be worth it."],
+  ["Good crop but weak defense", "Harvest unless the event is immediate", "The value is real, but not real enough to lose the crop before cashing out."],
+  ["Mid-tier crop on a stable farm", "Situational hold", "This works only when the event is strong and delaying one normal sale does not slow your route."],
+  ["Cheap or replaceable crop", "Sell normally", "Do not turn filler crops into a mutation fantasy. Keep the money loop moving."],
 ];
 
 const routine = [
-  ["Plant before weather, not during panic", "Your best mutation crops should already be in the ground before the event arrives."],
-  ["Use growth tools on crops worth saving", "Sprinklers and growth support belong on the crop you plan to hold, not on filler plants."],
-  ["Stop harvesting when the event starts", "The fastest way to throw away mutation value is harvesting too early just because the crop looks ready."],
-  ["Defend night overlap before chasing max value", "If an expensive crop can get stolen, a safe smaller payout beats a perfect mutation dream that disappears overnight."],
-  ["Harvest after the boost lands", "Sell only after you have confirmed the event result, especially on your best crops."],
+  ["Start with the crop, not the event", "Ask whether the crop is expensive enough to justify waiting before you care which event is active."],
+  ["Check defense before greed", "If the crop can be stolen or the plot is unstable, a safe harvest usually beats a perfect mutation dream."],
+  ["Use weather as a multiplier, not a reason", "A strong event helps, but it does not magically make weak crops worth holding."],
+  ["Harvest after the result is clear", "Once the value lands, take the win and restart the normal route instead of waiting for one more miracle."],
 ];
 
 const cropChoices = [
-  ["Worth saving early", "Bamboo and Pineapple", "Save them only when your route is already stable. Do not freeze your whole farm for small gains."],
-  ["Worth saving mid-game", "Mango and Pomegranate", "These start making sense when a boosted harvest is large enough to matter more than one extra normal cycle."],
-  ["Worth saving late-game", "Venus Fly Trap, Moon Bloom, Dragon's Breath", "These are the crops mutation greed is actually built around."],
-  ["Usually not worth overplaying", "Cheap starter filler crops", "If the crop is easy to replace, just keep the farm moving instead of roleplaying a late-game mutation route too early."],
+  ["Recommended hold targets", "Venus Fly Trap, Moon Bloom, Dragon's Breath", "These are the crops that can justify a full hold-and-defend mutation plan."],
+  ["Situational hold targets", "Pomegranate, Mango, Pineapple, Bamboo", "Only hold these when the farm is stable and the event is close enough to matter."],
+  ["Usually bad hold targets", "Cheap starter filler crops", "If replacing the crop is easy, the mutation route is almost always overkill."],
 ];
 
 const boundaries = [
-  ["Do not hold crops you cannot protect", "A mutated crop that gets stolen is worse than a safe sale."],
-  ["Do not force mutation greed on a weak farm", "If your income loop still breaks easily, keep selling and reinvesting instead of sitting on crops for low-value event chances."],
-  ["Do not treat every weather event the same", "Some events are worth waiting through. Others are only worth minor adjustments unless your crop value is already high."],
+  ["Do not hold crops you cannot protect", "A stolen crop is the clearest failure case for this whole route."],
+  ["Do not force mutation greed on a weak farm", "If the next seed, pet, or defense buy still feels difficult, keep selling and reinvesting instead of waiting."],
+  ["Do not keep waiting after you already won", "Once the mutation value lands, harvest it. Repeated waiting usually turns a good call into an unnecessary risk."],
 ];
 
 export default function MutationsPage() {
@@ -60,12 +55,12 @@ export default function MutationsPage() {
       <Breadcrumbs items={breadcrumbs} />
 
       <h1 className="text-3xl font-extrabold text-[#2E3B2E]">Grow a Garden 2 Mutations Guide</h1>
-      <p className="mt-2 text-sm text-[#777]">Mutations matter most when you already have crops worth saving, a reason to wait, and enough defense to stop that value from disappearing overnight.</p>
+      <p className="mt-2 text-sm text-[#777]">Use this page when your question is whether a crop is worth holding for extra value. If weather is already active and you only need event-by-event actions, open the weather page instead.</p>
 
       <section className="mt-5 rounded-2xl border-2 border-[#FFC107]/40 bg-[#FFF8E1] p-5">
         <h2 className="text-xl font-extrabold text-[#2E3B2E]">Quick Answer</h2>
         <p className="mt-2 text-sm leading-6 text-[#4b4b4b]">
-          Use mutations as a value multiplier, not as your basic money plan. Save your best crops for the right weather window, defend them first, then harvest only after the boost lands.
+          Use mutations as a value multiplier, not as your default money plan. Hold only when the crop is already expensive, the plot can protect it, and one boosted harvest matters more than another normal sale.
         </p>
       </section>
 
@@ -88,14 +83,14 @@ export default function MutationsPage() {
       </section>
 
       <section className="mt-8">
-        <h2 className="mb-3 text-xl font-extrabold text-[#2E3B2E]">Mutation Action Table</h2>
+        <h2 className="mb-3 text-xl font-extrabold text-[#2E3B2E]">Hold or sell framework</h2>
         <div className="overflow-x-auto rounded-xl border border-[#3c3c3c]/20 bg-white">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-[#3c3c3c]/20 bg-[#F9FAFB]">
-                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Mutation / event type</th>
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Situation</th>
                 <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Best move</th>
-                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Why this route works</th>
+                <th className="px-3 py-2 text-left text-xs font-bold text-[#777]">Why this call wins</th>
               </tr>
             </thead>
             <tbody>
@@ -112,7 +107,7 @@ export default function MutationsPage() {
       </section>
 
       <section className="mt-8">
-        <h2 className="mb-3 text-xl font-extrabold text-[#2E3B2E]">Best Mutation Routine</h2>
+        <h2 className="mb-3 text-xl font-extrabold text-[#2E3B2E]">How to make the call without overholding</h2>
         <ol className="space-y-3">
           {routine.map((step, index) => (
             <li key={step[0]} className="flex gap-3 rounded-xl border border-[#e5e7eb] bg-white p-4">
@@ -127,7 +122,7 @@ export default function MutationsPage() {
       </section>
 
       <section className="mt-8">
-        <h2 className="mb-3 text-xl font-extrabold text-[#2E3B2E]">Which crops are worth saving</h2>
+        <h2 className="mb-3 text-xl font-extrabold text-[#2E3B2E]">Which crops are actually worth holding for mutation value</h2>
         <div className="grid gap-3 sm:grid-cols-2">
           {cropChoices.map(([title, crops, body]) => (
             <div key={title} className="rounded-xl border-2 border-[#C8E6C9] bg-white p-4">
@@ -152,21 +147,19 @@ export default function MutationsPage() {
       </section>
 
       <section className="mt-8 rounded-xl border border-[#e5e7eb] bg-white p-5">
-        <h2 className="text-sm font-extrabold text-[#4b4b4b]">Next Guides</h2>
+        <h2 className="text-sm font-extrabold text-[#4b4b4b]">Next Step</h2>
         <div className="mt-2 flex flex-wrap gap-3 text-sm">
-          <Link href="/weather" className="font-semibold text-[#4CAF50] hover:underline">Weather Events</Link>
-          <Link href="/seeds" className="font-semibold text-[#4CAF50] hover:underline">Best Crops</Link>
-          <Link href="/night-stealing" className="font-semibold text-[#4CAF50] hover:underline">Night Defense</Link>
-          <Link href="/pets" className="font-semibold text-[#4CAF50] hover:underline">Mutation Pets</Link>
+          <Link href="/weather" className="font-semibold text-[#4CAF50] hover:underline">Need the event-by-event action once weather starts?</Link>
+          <Link href="/night-stealing" className="font-semibold text-[#4CAF50] hover:underline">Holding crops but losing them at night?</Link>
+          <Link href="/seeds" className="font-semibold text-[#4CAF50] hover:underline">Still deciding which crops are worth buying in the first place?</Link>
         </div>
       </section>
 
       <RelatedGuides
         guides={[
-          { href: "/weather", title: "Weather Events", detail: "Use the right event timing instead of treating every mutation window the same.", image: gag2Images.hero("mutations") },
-          { href: "/seeds", title: "Seeds & Plants", detail: "Check which crops are strong enough to justify a hold-and-defend mutation plan.", image: gag2Images.seed("venus-fly-trap") },
-          { href: "/pets", title: "Pets", detail: "See when Unicorn or Golden Dragonfly is actually worth the slot.", image: gag2Images.pet("unicorn") },
-          { href: "/night-stealing", title: "Night Defense", detail: "Protect the crop before you chase the perfect boosted sale.", emoji: "Defense" },
+          { href: "/weather", title: "Weather Events", detail: "Open this next when the crop already passes the hold test and you need the live event move.", image: gag2Images.hero("mutations") },
+          { href: "/night-stealing", title: "Night Defense", detail: "Use this next if mutation value keeps disappearing before you can cash out.", emoji: "Defense" },
+          { href: "/seeds", title: "Seeds & Plants", detail: "Go here if the bigger question is still what to plant or skip before thinking about mutations.", image: gag2Images.seed("venus-fly-trap") },
         ]}
       />
     </main>
